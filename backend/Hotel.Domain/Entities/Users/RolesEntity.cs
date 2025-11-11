@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Users
 {
-    internal class RolesEntity
+    public class Roles
     {
+        public required int RoleID { get; set; }
+        public required string RoleName { get; set; }
+        public required string Description { get; set; }
+        public required bool Active { get; set; }
+
+        //public List<UserRoles> UserRoles { get; set; } = new();
     }
 }

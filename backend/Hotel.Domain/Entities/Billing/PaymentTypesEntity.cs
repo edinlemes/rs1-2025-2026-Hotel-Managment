@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Billing
 {
-    internal class PaymentTypesEntity
+    public class PaymentTypes
     {
+        public required int PaymentTypeID { get; set; }
+        public required string PaymentTypeName { get; set; }
+        public required int SortOrder { get; set; }
+        public required bool Active { get; set; }
+
+        //public List<Payments> Payments { get; set; } = new();
     }
 }

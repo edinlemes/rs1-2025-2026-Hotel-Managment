@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Hotel
 {
-    public class Amenities
+    public class RoomAmenities
     {
+        public required int RoomAmenityID { get; set; }
+        public required int RoomID { get; set; }
         public required int AmenityID { get; set; }
-        public required string AmenityName { get; set; }
-        public required string Description { get; set; }
         public required bool Active { get; set; }
 
-        //public List<RoomAmenities> RoomAmenities { get; set; } = new();
+        //public required Rooms Room { get; set; }
+        //public required Amenities Amenity { get; set; }
     }
 }

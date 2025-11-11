@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Staff
 {
-    internal class StaffShiftEntity
+    public class StaffShift
     {
+        public required int ShiftID { get; set; }
+        public required DateTime DateOfWork { get; set; }
+        public required string ShiftType { get; set; }
+        public required string Notes { get; set; }
+
+        //public List<StaffShiftAssignments> Assignments { get; set; } = new();
     }
 }

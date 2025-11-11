@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Hotel
 {
-    internal class RateTypesEntity
+    public class RateTypes
     {
+        public required int RateTypeID { get; set; }
+        public required string RateTypeName { get; set; }
+        public required string Description { get; set; }
+        public required int SortOrder { get; set; }
+        public required bool Active { get; set; }
+
+        //public List<Rates> Rates { get; set; } = new();
     }
 }
