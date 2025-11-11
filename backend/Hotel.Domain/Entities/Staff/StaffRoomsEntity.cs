@@ -8,7 +8,7 @@ namespace Hotel.Domain.Entities.Staff
         public required int RoomID { get; set; }
         public required int StaffID { get; set; }
 
-        public required Rooms Room { get; set; }
-        public required Staff Staff { get; set; }
+        //public required Rooms Room { get; set; }
+        //public required Staff Staff { get; set; }
     }
 }

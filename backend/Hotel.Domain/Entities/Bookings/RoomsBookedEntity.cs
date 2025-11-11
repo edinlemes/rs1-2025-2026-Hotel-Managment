@@ -15,7 +15,7 @@ namespace Hotel.Domain.Entities.Bookings
         public required DateTime DateBooked { get; set; }
         public required bool Active { get; set; }
 
-        public required Bookings Booking { get; set; }
-        public required Rooms Room { get; set; }
+        //public required Bookings Booking { get; set; }
+        //public required Rooms Room { get; set; }
     }
 }

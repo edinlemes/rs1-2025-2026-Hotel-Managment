@@ -4,13 +4,13 @@ namespace Hotel.Domain.Entities.Hotel
 {
     public class RatesEntity : BaseEntity
     {
-        public required int RoomID { get; set; }
-        public required decimal Rate { get; set; }
-        public required DateTime FromDate { get; set; }
-        public required DateTime ToDate { get; set; }
-        public required int RateTypeID { get; set; }
+        public int RoomID { get; set; }
+        public decimal Rate { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
+        public int RateTypeID { get; set; }
 
-        //public required Rooms Room { get; set; }
-        //public required RateTypes RateType { get; set; }
+        public RoomsEntity? Room { get; set; }
+        public RateTypesEntity? RateType { get; set; }
     }
 }
