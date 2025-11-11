@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hotel.Domain.Common;
 
 namespace Hotel.Domain.Entities.Staff
 {
-    public class Staff
+    public class Staff :BaseEntity
     {
-        public required int StaffID { get; set; }
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
         public required int PositionID { get; set; }

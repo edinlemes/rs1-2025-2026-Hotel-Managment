@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel.Domain.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Billing
 {
-    public class Bills
+    public class Bills :BaseEntity
     {
-        public required int BillID { get; set; }
         public required int BookingID { get; set; }
         public required DateTime BillDate { get; set; }
         public required decimal Subtotal { get; set; }

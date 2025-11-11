@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hotel.Domain.Common;
 
 namespace Hotel.Domain.Entities.Users
 {
-    public class UserRoles
+    public class UserRoles : BaseEntity
     {
-        public required int UserRoleID { get; set; }
         public required int UserID { get; set; }
         public required int RoleID { get; set; }
         public required DateTime AssignedDate { get; set; }

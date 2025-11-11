@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hotel.Domain.Common;
 
 namespace Hotel.Domain.Entities.Hotel
 {
-    public class Amenities
+    public class Amenities : BaseEntity
     {
-        public required int AmenityID { get; set; }
         public required string AmenityName { get; set; }
         public required string Description { get; set; }
         public required bool Active { get; set; }

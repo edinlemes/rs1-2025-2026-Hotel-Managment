@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hotel.Domain.Common;
 
 namespace Hotel.Domain.Entities.Users
 {
-    internal class PositionsEntity
+    public class Positions : BaseEntity
     {
+        public required string PositionName { get; set; }
+        public required int SortOrder { get; set; }
+        public required bool Active { get; set; }
+
+        //public List<Staff> Staff { get; set; } = new();
     }
 }

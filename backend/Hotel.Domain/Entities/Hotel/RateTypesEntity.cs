@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hotel.Domain.Common;
 
 namespace Hotel.Domain.Entities.Hotel
 {
-    public class RateTypes
+    public class RateTypes : BaseEntity
     {
-        public required int RateTypeID { get; set; }
         public required string RateTypeName { get; set; }
         public required string Description { get; set; }
         public required int SortOrder { get; set; }

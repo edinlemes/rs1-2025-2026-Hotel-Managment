@@ -1,15 +1,9 @@
-﻿using Hotel.Domain.Entities.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hotel.Domain.Common;
 
 namespace Hotel.Domain.Entities.Hotel
 {
-    public class Hotels
+    public class Hotels : BaseEntity
     {
-        public required int HotelID { get; set; }
         public required string HotelCode { get; set; }
         public required string Name { get; set; }
         public required string Address { get; set; }

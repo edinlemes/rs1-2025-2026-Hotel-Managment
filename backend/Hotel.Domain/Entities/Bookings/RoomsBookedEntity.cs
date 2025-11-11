@@ -1,4 +1,5 @@
-﻿using Hotel.Domain.Entities.Hotel;
+﻿using Hotel.Domain.Common;
+using Hotel.Domain.Entities.Hotel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Bookings
 {
-    public class RoomsBooked
+    public class RoomsBooked : BaseEntity
     {
-        public required int RoomBookedID { get; set; }
         public required int BookingID { get; set; }
         public required int RoomID { get; set; }
         public required DateTime DateBooked { get; set; }

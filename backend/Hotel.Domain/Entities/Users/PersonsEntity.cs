@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hotel.Domain.Common;
 
 namespace Hotel.Domain.Entities.Users;
 
-public class Persons
+public class Persons : BaseEntity
 {
-    public required int PersonID { get; set; }
     public required string FirstName { get; set; }
     public required string LastName { get; set; }
     public required string Address { get; set; }

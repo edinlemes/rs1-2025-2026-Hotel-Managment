@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel.Domain.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Hotel
 {
-    public class Rooms
+    public class Rooms : BaseEntity
     {
-        public required int RoomID { get; set; }
         public required int HotelID { get; set; }
         public required int Floor { get; set; }
         public required int RoomTypeID { get; set; }

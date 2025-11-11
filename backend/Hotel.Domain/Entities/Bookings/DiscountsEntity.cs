@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hotel.Domain.Common;
+
 
 namespace Hotel.Domain.Entities.Bookings
 {
-    public class Discounts
+    public class Discounts : BaseEntity
     {
-        public required int DiscountID { get; set; }
         public required string Code { get; set; }
         public required string Description { get; set; }
         public required decimal DiscountType { get; set; }

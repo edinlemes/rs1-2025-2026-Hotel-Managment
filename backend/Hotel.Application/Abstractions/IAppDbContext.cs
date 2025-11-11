@@ -1,4 +1,6 @@
-﻿namespace Hotel.Application.Abstractions;
+﻿using Hotel.Domain.Entities.Billing;
+
+namespace Hotel.Application.Abstractions;
 
 // Application layer
 public interface IAppDbContext

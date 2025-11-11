@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hotel.Domain.Common;
 
 namespace Hotel.Domain.Entities.Bookings
 {
-    public class Channels
+    public class Channels : BaseEntity
     {
-        public required int ChannelID { get; set; }
         public required string ChannelName { get; set; }
         public required string Description { get; set; }
         public required bool Active { get; set; }

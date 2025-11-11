@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hotel.Domain.Common;
 
 namespace Hotel.Domain.Entities.Services
 {
-    public class GuestServices
+    public class GuestServices : BaseEntity
     {
-        public required int GuestServiceID { get; set; }
         public required int BookingID { get; set; }
         public required int HotelServiceID { get; set; }
         public required DateTime DateUsed { get; set; }
