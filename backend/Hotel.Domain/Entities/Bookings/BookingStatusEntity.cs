@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Bookings
 {
-    public class BookingStatus : BaseEntity
+    public class BookingStatusEntity : BaseEntity
     {
         public required string Status { get; set; }
         public required string Description { get; set; }

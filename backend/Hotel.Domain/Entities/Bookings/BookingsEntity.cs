@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Bookings
 {
-    public class Bookings : BaseEntity
+    public class BookingsEntity : BaseEntity
     {
         public required int HotelID { get; set; }
         public required int PersonID { get; set; }

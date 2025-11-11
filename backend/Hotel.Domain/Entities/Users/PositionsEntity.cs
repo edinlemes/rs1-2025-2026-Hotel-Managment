@@ -2,7 +2,7 @@
 
 namespace Hotel.Domain.Entities.Users
 {
-    public class Positions : BaseEntity
+    public class PositionsEntity : BaseEntity
     {
         public required string PositionName { get; set; }
         public required int SortOrder { get; set; }

@@ -3,7 +3,7 @@
 
 namespace Hotel.Domain.Entities.Bookings
 {
-    public class Discounts : BaseEntity
+    public class DiscountsEntity : BaseEntity
     {
         public required string Code { get; set; }
         public required string Description { get; set; }

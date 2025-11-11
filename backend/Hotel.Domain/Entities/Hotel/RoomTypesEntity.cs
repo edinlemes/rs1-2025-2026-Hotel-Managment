@@ -2,7 +2,7 @@
 
 namespace Hotel.Domain.Entities.Hotel
 {
-    public class RoomTypes : BaseEntity
+    public class RoomTypesEntity : BaseEntity
     {
         public required string RoomTypeName { get; set; }
         public required string Description { get; set; }

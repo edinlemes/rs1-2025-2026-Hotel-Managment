@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Billing
 {
-    public class Payments : BaseEntity
+    public class PaymentsEntity : BaseEntity
     {
         public required DateTime Date { get; set; }
         public required decimal Payment { get; set; }

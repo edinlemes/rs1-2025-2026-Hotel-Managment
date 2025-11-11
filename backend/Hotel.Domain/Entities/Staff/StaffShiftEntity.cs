@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Staff
 {
-    public class StaffShift : BaseEntity
+    public class StaffShiftEntity : BaseEntity
     {
         public required DateTime DateOfWork { get; set; }
         public required string ShiftType { get; set; }

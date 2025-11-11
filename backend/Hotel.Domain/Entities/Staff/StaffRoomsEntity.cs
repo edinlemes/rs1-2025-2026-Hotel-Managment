@@ -3,7 +3,7 @@ using Hotel.Domain.Entities.Hotel;
 
 namespace Hotel.Domain.Entities.Staff
 {
-    public class StaffRooms : BaseEntity
+    public class StaffRoomsEntity : BaseEntity
     {
         public required int RoomID { get; set; }
         public required int StaffID { get; set; }

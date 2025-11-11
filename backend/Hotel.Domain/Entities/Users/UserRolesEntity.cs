@@ -2,7 +2,7 @@
 
 namespace Hotel.Domain.Entities.Users
 {
-    public class UserRoles : BaseEntity
+    public class UserRolesEntity : BaseEntity
     {
         public required int UserID { get; set; }
         public required int RoleID { get; set; }

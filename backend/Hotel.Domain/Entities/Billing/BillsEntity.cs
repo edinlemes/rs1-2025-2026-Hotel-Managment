@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Billing
 {
-    public class Bills :BaseEntity
+    public class BillsEntity :BaseEntity
     {
         public required int BookingID { get; set; }
         public required DateTime BillDate { get; set; }

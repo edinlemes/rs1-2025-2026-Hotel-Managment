@@ -2,7 +2,7 @@
 
 namespace Hotel.Domain.Entities.Users
 {
-    public class Users : BaseEntity
+    public class UsersEntity : BaseEntity
     {
         public required string Username { get; set; }
         public required string Password { get; set; }

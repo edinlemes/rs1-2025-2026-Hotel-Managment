@@ -2,7 +2,7 @@
 
 namespace Hotel.Domain.Entities.Hotel
 {
-    public class Rates : BaseEntity
+    public class RatesEntity : BaseEntity
     {
         public required int RoomID { get; set; }
         public required decimal Rate { get; set; }

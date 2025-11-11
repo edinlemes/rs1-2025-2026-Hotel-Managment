@@ -2,7 +2,7 @@
 
 namespace Hotel.Domain.Entities.Staff
 {
-    public class StaffShiftAssignments : BaseEntity
+    public class StaffShiftAssignmentsEntity : BaseEntity
     {
         public required int StaffID { get; set; }
         public required int ShiftID { get; set; }

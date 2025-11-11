@@ -2,7 +2,7 @@
 
 namespace Hotel.Domain.Entities.Staff
 {
-    public class Staff :BaseEntity
+    public class StaffEntity : BaseEntity
     {
         public required string FirstName { get; set; }
         public required string LastName { get; set; }

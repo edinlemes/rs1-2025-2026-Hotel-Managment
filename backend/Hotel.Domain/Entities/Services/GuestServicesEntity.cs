@@ -2,7 +2,7 @@
 
 namespace Hotel.Domain.Entities.Services
 {
-    public class GuestServices : BaseEntity
+    public class GuestServicesEntity : BaseEntity
     {
         public required int BookingID { get; set; }
         public required int HotelServiceID { get; set; }

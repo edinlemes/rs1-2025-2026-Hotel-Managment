@@ -2,7 +2,7 @@
 
 namespace Hotel.Domain.Entities.Bookings
 {
-    public class Channels : BaseEntity
+    public class ChannelsEntity : BaseEntity
     {
         public required string ChannelName { get; set; }
         public required string Description { get; set; }
