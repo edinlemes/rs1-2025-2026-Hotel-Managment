@@ -9,6 +9,6 @@ namespace Hotel.Domain.Entities.Hotel
         public required int SortOrder { get; set; }
         public required bool Active { get; set; }
 
-        //public List<Rates> Rates { get; set; } = new();
+        public List<RatesEntity?> Rates { get; set; } = new();
     }
 }

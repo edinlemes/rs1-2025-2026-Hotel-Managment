@@ -1,10 +1,5 @@
 ﻿using Hotel.Domain.Common;
 using Hotel.Domain.Entities.Hotel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Bookings
 {
@@ -15,7 +10,9 @@ namespace Hotel.Domain.Entities.Bookings
         public required DateTime DateBooked { get; set; }
         public required bool Active { get; set; }
 
-        //public required Bookings Booking { get; set; }
-        //public required Rooms Room { get; set; }
+        public required BookingsEntity? Booking { get; set; }
+        public int BookingId { get; set; }
+        public required RoomsEntity? Room { get; set; }
+        public int RoomId { get; set; }
     }
 }

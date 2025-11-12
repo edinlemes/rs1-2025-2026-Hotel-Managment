@@ -1,4 +1,5 @@
 ﻿using Hotel.Domain.Common;
+using Hotel.Domain.Entities.Bookings;
 
 namespace Hotel.Domain.Entities.Users;
 
@@ -14,8 +15,7 @@ public class PersonsEntity : BaseEntity
     public required string PhoneNumber { get; set; }
     public required string MailAddress { get; set; }
     public required string Gender { get; set; }
-    public required int UserID { get; set; }
-
-    //public required Users User { get; set; }
-    //public List<Bookings> Bookings { get; set; } = new();
+    public UsersEntity? User { get; set; }
+    public int UserId { get; set; }
+    public List<BookingsEntity?> Bookings { get; set; } = new();
 }

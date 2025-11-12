@@ -8,6 +8,6 @@ namespace Hotel.Domain.Entities.Hotel
         public required string Description { get; set; }
         public required bool Active { get; set; }
 
-        //public List<RoomAmenities> RoomAmenities { get; set; } = new();
+        public List<RoomAmenitiesEntity?> RoomAmenities { get; set; } = new();
     }
 }

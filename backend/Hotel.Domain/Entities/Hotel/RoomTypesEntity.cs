@@ -4,11 +4,11 @@ namespace Hotel.Domain.Entities.Hotel
 {
     public class RoomTypesEntity : BaseEntity
     {
-        public required string RoomTypeName { get; set; }
-        public required string Description { get; set; }
-        public required int SortOrder { get; set; }
-        public required bool Active { get; set; }
+        public string RoomTypeName { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public int SortOrder { get; set; }
+        public bool Active { get; set; }
 
-        //public List<Rooms> Rooms { get; set; } = new();
+        public List<RoomsEntity?> Rooms { get; set; } = new();
     }
 }

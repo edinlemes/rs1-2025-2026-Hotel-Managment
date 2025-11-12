@@ -4,12 +4,12 @@ namespace Hotel.Domain.Entities.Users
 {
     public class UserRolesEntity : BaseEntity
     {
-        public required int UserID { get; set; }
-        public required int RoleID { get; set; }
-        public required DateTime AssignedDate { get; set; }
-        public required bool Active { get; set; }
+        public DateTime AssignedDate { get; set; }
+        public bool Active { get; set; }
 
-        //public required Users User { get; set; }
-        //public required Roles Role { get; set; }
+        public UsersEntity? User { get; set; }
+        public int UserId { get; set; }
+        public RolesEntity? Role { get; set; }
+        public int RoleId { get; set; }
     }
 }

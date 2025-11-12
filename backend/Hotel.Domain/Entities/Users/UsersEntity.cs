@@ -1,4 +1,5 @@
 ﻿using Hotel.Domain.Common;
+using Hotel.Domain.Entities.Staff;
 
 namespace Hotel.Domain.Entities.Users
 {
@@ -10,8 +11,8 @@ namespace Hotel.Domain.Entities.Users
         public required bool Active { get; set; }
         public required DateTime CreatedAt { get; set; }
 
-        //public List<Persons> Persons { get; set; } = new();
-        //public List<Staff> Staff { get; set; } = new();
-        //public List<UserRoles> UserRoles { get; set; } = new();
+        public List<PersonsEntity?> Persons { get; set; } = new();
+        public List<StaffEntity?> Staff { get; set; } = new();
+        public List<UserRolesEntity?> UserRoles { get; set; } = new();
     }
 }

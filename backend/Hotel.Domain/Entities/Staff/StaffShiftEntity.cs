@@ -1,9 +1,4 @@
 ﻿using Hotel.Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel.Domain.Entities.Staff
 {
@@ -13,6 +8,6 @@ namespace Hotel.Domain.Entities.Staff
         public required string ShiftType { get; set; }
         public required string Notes { get; set; }
 
-        //public List<StaffShiftAssignments> Assignments { get; set; } = new();
+        public List<StaffShiftAssignmentsEntity?> Assignments { get; set; } = new();
     }
 }

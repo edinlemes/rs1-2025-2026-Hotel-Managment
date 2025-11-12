@@ -8,6 +8,6 @@ namespace Hotel.Domain.Entities.Users
         public required string Description { get; set; }
         public required bool Active { get; set; }
 
-        //public List<UserRoles> UserRoles { get; set; } = new();
+        public List<UserRolesEntity?> UserRoles { get; set; } = new();
     }
 }

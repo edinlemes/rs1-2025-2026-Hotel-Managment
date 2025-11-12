@@ -1,4 +1,6 @@
 ﻿using Hotel.Domain.Common;
+using Hotel.Domain.Entities.Bookings;
+using Hotel.Domain.Entities.Services;
 
 namespace Hotel.Domain.Entities.Hotel
 {
@@ -14,9 +16,9 @@ namespace Hotel.Domain.Entities.Hotel
         public required string CompanyMailAddress { get; set; }
         public required string WebsiteAddress { get; set; }
 
-        //public List<Rooms> Rooms { get; set; } = new();
-        //public List<Bookings> Bookings { get; set; } = new();
-        //public List<HotelServices> HotelServices { get; set; } = new();
+        public List<RoomsEntity?> Rooms { get; set; } = new();
+        public List<BookingsEntity?> Bookings { get; set; } = new();
+        public List<HotelServicesEntity?> HotelServices { get; set; } = new();
     }
 
 }

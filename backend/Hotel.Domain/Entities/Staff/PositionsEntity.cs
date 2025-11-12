@@ -8,6 +8,6 @@ namespace Hotel.Domain.Entities.Staff
         public required int SortOrder { get; set; }
         public required bool Active { get; set; }
 
-        //public List<Staff> Staff { get; set; } = new();
+        public List<StaffEntity?> Staff { get; set; } = new();
     }
 }

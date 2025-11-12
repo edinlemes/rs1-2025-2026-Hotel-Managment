@@ -13,6 +13,6 @@ namespace Hotel.Domain.Entities.Bookings
         public required DateTime EndDate { get; set; }
         public required bool Active { get; set; }
 
-        //public List<Bookings> Bookings { get; set; } = new();
+        public List<BookingsEntity>? Bookings { get; set; } = new();
     }
 }

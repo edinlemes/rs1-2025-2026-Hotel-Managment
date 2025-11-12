@@ -5,13 +5,13 @@ namespace Hotel.Domain.Entities.Services
 {
     public class HotelServicesEntity : BaseEntity
     {
-        public required int HotelID { get; set; }
-        public required string ServiceName { get; set; }
-        public required string Description { get; set; }
-        public required decimal Price { get; set; }
-        public required bool Active { get; set; }
+        public string ServiceName { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public bool Active { get; set; }
 
-        public required Hotels Hotel { get; set; }
-        //public List<GuestServices> GuestServices { get; set; } = new();
+        public HotelsEntity? Hotel { get; set; }
+        public int HotelId { get; set; }
+        public List<GuestServicesEntity?> GuestServices { get; set; } = new();
     }
 }
