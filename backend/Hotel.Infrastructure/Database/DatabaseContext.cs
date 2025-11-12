@@ -5,16 +5,12 @@ using Hotel.Domain.Entities.Hotel;
 using Hotel.Domain.Entities.Services;
 using Hotel.Domain.Entities.Staff;
 using Hotel.Domain.Entities.Users;
-using Hotel.Infrastructure.Database.Configurations.Identity;
 
 namespace Hotel.Infrastructure.Database;
 
 public partial class DatabaseContext : DbContext, IAppDbContext
 {
-    public DbSet<ProductCategoryEntity> ProductCategories => Set<ProductCategoryEntity>();
-    public DbSet<ProductEntity> Products => Set<ProductEntity>();
-    public DbSet<HotelUserEntity> Users => Set<HotelUserEntity>();
-    public DbSet<RefreshTokenEntity> RefreshTokens => Set<RefreshTokenEntity>();
+
     public DbSet<BillsEntity> Bills => Set<BillsEntity>();
     public DbSet<PaymentsEntity> Payments => Set<PaymentsEntity>();
     public DbSet<PaymentStatusEntity> PaymentStatuses => Set<PaymentStatusEntity>();

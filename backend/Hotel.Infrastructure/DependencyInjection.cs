@@ -41,10 +41,10 @@ public static class DependencyInjection
         services.AddScoped<IAppDbContext>(sp => sp.GetRequiredService<DatabaseContext>());
 
         // Identity hasher
-        services.AddScoped<IPasswordHasher<HotelUserEntity>, PasswordHasher<HotelUserEntity>>();
+        //services.AddScoped<IPasswordHasher<HotelUserEntity>, PasswordHasher<HotelUserEntity>>();
 
         // Token service (reads JwtOptions via IOptions<JwtOptions>)
-        services.AddTransient<IJwtTokenService, JwtTokenService>();
+        //services.AddTransient<IJwtTokenService, JwtTokenService>();
 
         // HttpContext accessor + current user
         services.AddHttpContextAccessor();
