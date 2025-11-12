@@ -5,16 +5,16 @@ namespace Hotel.Domain.Entities.Users;
 
 public class PersonsEntity : BaseEntity
 {
-    public required string FirstName { get; set; }
-    public required string LastName { get; set; }
-    public required string Address { get; set; }
-    public required string City { get; set; }
-    public required string State { get; set; }
-    public required string ZipCode { get; set; }
-    public required string Country { get; set; }
-    public required string PhoneNumber { get; set; }
-    public required string MailAddress { get; set; }
-    public required string Gender { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Address { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public string ZipCode { get; set; }
+    public string Country { get; set; }
+    public string PhoneNumber { get; set; }
+    public string MailAddress { get; set; }
+    public string Gender { get; set; }
     public UsersEntity? User { get; set; }
     public int UserId { get; set; }
     public List<BookingsEntity?> Bookings { get; set; } = new();

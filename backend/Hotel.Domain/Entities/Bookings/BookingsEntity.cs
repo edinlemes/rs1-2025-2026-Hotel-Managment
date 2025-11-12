@@ -19,7 +19,7 @@ public class BookingsEntity : BaseEntity
     public int BookingStatusId { get; set; }
     public required DiscountsEntity? Discount { get; set; }
     public int DiscountId { get; set; }
-    public required ChannelsEntity? Channel { get; set; }
+    public ChannelsEntity? Channel { get; set; }
     public int ChannelId { get; set; }
 
 }

@@ -4,9 +4,9 @@ namespace Hotel.Domain.Entities.Bookings
 {
     public class ChannelsEntity : BaseEntity
     {
-        public required string ChannelName { get; set; }
-        public required string Description { get; set; }
-        public required bool Active { get; set; }
+        public string ChannelName { get; set; }
+        public string Description { get; set; }
+        public bool Active { get; set; }
 
         public List<BookingsEntity?> Bookings { get; set; } = new();
     }

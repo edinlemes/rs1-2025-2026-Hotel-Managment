@@ -4,10 +4,10 @@ namespace Hotel.Domain.Entities.Billing
 {
     public class PaymentStatusEntity : BaseEntity
     {
-        public required string Status { get; set; }
-        public required string Description { get; set; }
-        public required int SortOrder { get; set; }
-        public required bool Active { get; set; }
+        public string Status { get; set; }
+        public string Description { get; set; }
+        public int SortOrder { get; set; }
+        public bool Active { get; set; }
 
         public List<PaymentsEntity>? Payments { get; set; } = new();
     }
