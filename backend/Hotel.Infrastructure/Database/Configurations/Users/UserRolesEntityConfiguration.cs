@@ -1,6 +1,4 @@
-﻿using Hotel.Domain.Common;
-
-namespace Hotel.Domain.Entities.Users
+﻿namespace Hotel.Domain.Entities.Users
 {
     public class UserRolesEntityConfiguration : IEntityTypeConfiguration<UserRolesEntity>
     {
