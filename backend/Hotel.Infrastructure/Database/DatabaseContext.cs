@@ -38,7 +38,7 @@ public partial class DatabaseContext : DbContext, IAppDbContext
     public DbSet<PositionsEntity> JobPositions => Set<PositionsEntity>();
     public DbSet<UserRolesEntity> UserRoles => Set<UserRolesEntity>();
     public DbSet<UsersEntity> UserTable => Set<UsersEntity>(); 
-
+    public DbSet<RefreshTokenEntity> RefreshTokens => Set<RefreshTokenEntity>();
 
     private readonly TimeProvider _clock;
     public DatabaseContext(DbContextOptions<DatabaseContext> options, TimeProvider clock) : base(options)

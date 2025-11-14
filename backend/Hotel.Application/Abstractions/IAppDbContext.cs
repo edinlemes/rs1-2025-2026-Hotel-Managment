@@ -38,6 +38,7 @@ public interface IAppDbContext
     DbSet<PositionsEntity> JobPositions { get; }
     DbSet<UserRolesEntity> UserRoles { get; }
     DbSet<UsersEntity> UserTable { get; }
+    DbSet<RefreshTokenEntity> RefreshTokens { get; }
 
     Task<int> SaveChangesAsync(CancellationToken ct);
 }

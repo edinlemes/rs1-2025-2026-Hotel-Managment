@@ -1,7 +1,9 @@
 ﻿using Hotel.API;
 using Hotel.API.Middleware;
 using Hotel.Application;
+using Hotel.Application.Abstractions;
 using Hotel.Infrastructure;
+using Hotel.Infrastructure.Common;
 using Serilog;
 
 public partial class Program
@@ -48,6 +50,9 @@ public partial class Program
                 .AddAPI(builder.Configuration, builder.Environment)
                 .AddInfrastructure(builder.Configuration, builder.Environment)
                 .AddApplication();
+
+            builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
+
 
             var app = builder.Build();
 
