@@ -53,7 +53,6 @@ public partial class Program
                 .AddInfrastructure(builder.Configuration, builder.Environment)
                 .AddApplication();
 
-            builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 
 
             var app = builder.Build();

@@ -13,5 +13,5 @@ public sealed class RefreshTokenCommand : IRequest<RefreshTokenCommandDto>
     /// <summary>
     /// (Optional) Client "fingerprint" / device identifier for device-bound tokens.
     /// </summary>
-    public string? Fingerprint { get; init; }
+    //public string? Fingerprint { get; init; }
 }

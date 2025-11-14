@@ -1,4 +1,4 @@
-﻿namespace Hotel.Application.Modules.Auth.Users.Commands.Create;
+﻿namespace Hotel.Application.Modules.Auth.Commands.Create;
 
 public sealed class RegisterUserCommand : IRequest<RegisterUserCommandDto>
 {
