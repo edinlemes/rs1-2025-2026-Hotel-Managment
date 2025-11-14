@@ -2,7 +2,7 @@
 using Hotel.Application.Modules.Auth.Commands.Logout;
 using Hotel.Application.Modules.Auth.Commands.Refresh;
 
-namespace Hotel.API.Controllers;
+namespace Hotel.API.Controllers.User;
 
 [ApiController]
 [Route("api/auth")]
