@@ -1,7 +1,9 @@
-﻿using Hotel.Infrastructure.Common;
+﻿using Hotel.Domain.Entities.Users;
+using Hotel.Infrastructure.Common;
 using Hotel.Shared.Dtos;
 using Hotel.Shared.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -69,6 +71,8 @@ public static class DependencyInjection
                 .RequireAuthenticatedUser()
                 .Build();
         });
+
+        services.AddScoped<IPasswordHasher<UsersEntity>, PasswordHasher<UsersEntity>>();
 
         // Swagger with Bearer auth
         services.AddEndpointsApiExplorer();
