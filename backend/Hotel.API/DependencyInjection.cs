@@ -1,4 +1,5 @@
-﻿using Hotel.Domain.Entities.Users;
+﻿using Hotel.Application.Abstractions;
+using Hotel.Domain.Entities.Users;
 using Hotel.Infrastructure.Common;
 using Hotel.Shared.Dtos;
 using Hotel.Shared.Options;
@@ -73,6 +74,8 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IPasswordHasher<UsersEntity>, PasswordHasher<UsersEntity>>();
+
+        services.AddScoped<IJwtTokenService, JwtTokenService>();
 
         // Swagger with Bearer auth
         services.AddEndpointsApiExplorer();

@@ -27,12 +27,12 @@ public sealed class RefreshTokenCommandHandler(
             throw new HotelConflictException("Refresh token je nevažeći ili je istekao.");
 
         // (optional) Fingerprint check
-        if (rt.Fingerprint is not null &&
-            request.Fingerprint is not null &&
-            rt.Fingerprint != request.Fingerprint)
-        {
-            throw new HotelConflictException("Neispravan klijentski otisak.");
-        }
+        //if (rt.Fingerprint is not null &&
+        //    request.Fingerprint is not null &&
+        //    rt.Fingerprint != request.Fingerprint)
+        //{
+        //    throw new HotelConflictException("Neispravan klijentski otisak.");
+        //}
 
         var user = rt.User;
         if (user is null || !user.Active || user.IsDeleted)
@@ -51,7 +51,6 @@ public sealed class RefreshTokenCommandHandler(
             TokenHash = pair.RefreshTokenHash,
             ExpiresAtUtc = pair.RefreshTokenExpiresAtUtc,
             UserId = user.Id,
-            Fingerprint = request.Fingerprint,
         };
 
         ctx.RefreshTokens.Add(newRt);
