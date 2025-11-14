@@ -10,7 +10,6 @@ public class UsersEntityConfiguration : IEntityTypeConfiguration<UsersEntity>
         builder.Property(x => x.Password).IsRequired().HasMaxLength(100);
         builder.Property(x => x.Email).IsRequired().HasMaxLength(100);
         builder.Property(x => x.Active).IsRequired();
-        builder.Property(x => x.CreatedAt).IsRequired();
-        // Collections configured from other sides
+
     }
 }

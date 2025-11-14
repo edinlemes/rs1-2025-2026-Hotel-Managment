@@ -1,24 +1,25 @@
 ﻿//using Hotel.Application.Modules.Auth.Commands.Login;
+//using Hotel.Domain.Entities.Users;
 
 //public sealed class LoginCommandHandler(
 //    IAppDbContext ctx,
 //    IJwtTokenService jwt,
-//    IPasswordHasher<HotelUserEntity> hasher)
+//    IPasswordHasher<UsersEntity> hasher)
 //    : IRequestHandler<LoginCommand, LoginCommandDto>
 //{
 //    public async Task<LoginCommandDto> Handle(LoginCommand request, CancellationToken ct)
 //    {
 //        var email = request.Email.Trim().ToLowerInvariant();
 
-//        var user = await ctx.Users
-//            .FirstOrDefaultAsync(x => x.Email.ToLower() == email && x.IsEnabled && !x.IsDeleted, ct)
+//        var user = await ctx.UserTable
+//            .FirstOrDefaultAsync(x => x.Email.ToLower() == email && x.Active && !x.IsDeleted, ct)
 //            ?? throw new HotelNotFoundException("Korisnik nije pronađen ili je onemogućen.");
 
-//        var verify = hasher.VerifyHashedPassword(user, user.PasswordHash, request.Password);
+//        var verify = hasher.VerifyHashedPassword(user, user.Password, request.Password);
 //        if (verify == PasswordVerificationResult.Failed)
 //            //throw new HotelConflictException("Pogrešni kredencijali.");
 
-//        var tokens = jwt.IssueTokens(user);
+//            var tokens = jwt.IssueTokens(user);
 
 //        ctx.RefreshTokens.Add(new RefreshTokenEntity
 //        {
