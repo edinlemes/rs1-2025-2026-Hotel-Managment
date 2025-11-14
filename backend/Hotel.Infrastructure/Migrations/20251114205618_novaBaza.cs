@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Hotel.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class test : Migration
+    public partial class novaBaza : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -270,7 +270,6 @@ namespace Hotel.Infrastructure.Migrations
                     Password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Active = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAtUtc = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedAtUtc = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -374,6 +373,33 @@ namespace Hotel.Infrastructure.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RefreshTokens",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TokenHash = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ExpiresAtUtc = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsRevoked = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Fingerprint = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    RevokedAtUtc = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAtUtc = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedAtUtc = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RefreshTokens", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RefreshTokens_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -804,6 +830,12 @@ namespace Hotel.Infrastructure.Migrations
                 column: "RoomId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_RefreshTokens_UserId_TokenHash",
+                table: "RefreshTokens",
+                columns: new[] { "UserId", "TokenHash" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_RoomAmenities_AmenityId",
                 table: "RoomAmenities",
                 column: "AmenityId");
@@ -890,6 +922,9 @@ namespace Hotel.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Rates");
+
+            migrationBuilder.DropTable(
+                name: "RefreshTokens");
 
             migrationBuilder.DropTable(
                 name: "RoomAmenities");
