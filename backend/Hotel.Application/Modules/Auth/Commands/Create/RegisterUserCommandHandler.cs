@@ -2,7 +2,7 @@
 using Hotel.Application.Modules.Auth.Roles.Commands.Create;
 using Hotel.Domain.Entities.Users;
 
-namespace Hotel.Application.Modules.Auth.Users.Commands.Create;
+namespace Hotel.Application.Modules.Auth.Commands.Create;
 
 public sealed class RegisterUserCommandHandler(
     IAppDbContext ctx,

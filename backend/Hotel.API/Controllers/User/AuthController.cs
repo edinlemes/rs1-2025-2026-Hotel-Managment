@@ -1,7 +1,7 @@
-﻿using Hotel.Application.Modules.Auth.Commands.Login;
+﻿using Hotel.Application.Modules.Auth.Commands.Create;
+using Hotel.Application.Modules.Auth.Commands.Login;
 using Hotel.Application.Modules.Auth.Commands.Logout;
 using Hotel.Application.Modules.Auth.Commands.Refresh;
-using Hotel.Application.Modules.Auth.Users.Commands.Create;
 
 namespace Hotel.API.Controllers.User;
 
