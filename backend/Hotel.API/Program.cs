@@ -2,8 +2,10 @@
 using Hotel.API.Middleware;
 using Hotel.Application;
 using Hotel.Application.Abstractions;
+using Hotel.Domain.Entities.Users;
 using Hotel.Infrastructure;
 using Hotel.Infrastructure.Common;
+using Microsoft.AspNetCore.Identity;
 using Serilog;
 
 public partial class Program
