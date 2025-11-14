@@ -5,8 +5,8 @@ using Hotel.Domain.Entities.Users;
 namespace Hotel.Application.Modules.Auth.Users.Commands.Create;
 
 public sealed class RegisterUserCommandHandler(
-    IAppDbContext ctx)
-    //IPasswordHasher<UsersEntity> hasher)
+    IAppDbContext ctx,
+    IPasswordHasher<UsersEntity> hasher)
     : IRequestHandler<RegisterUserCommand, RegisterUserCommandDto>
 {
     public async Task<RegisterUserCommandDto> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
@@ -23,15 +23,14 @@ public sealed class RegisterUserCommandHandler(
             Email = request.Email,
             Active = true,
             CreatedAtUtc = DateTime.UtcNow,
-            Password = request.Password, // TODO: hash password
         };
 
-        //user.Password = hasher.HashPassword(user, request.Password);
+        user.Password = hasher.HashPassword(user, request.Password);
 
         ctx.UserTable.Add(user);
         await ctx.SaveChangesAsync(cancellationToken);
         // OPTIONAL: dodaj defaultnu rolu USER
-        var defaultRole = await ctx.Roles.FirstAsync(x => x.RoleName == "User", cancellationToken);
+        var defaultRole = await ctx.Roles.FirstOrDefaultAsync(x => x.RoleName == "User", cancellationToken);
         if (defaultRole != null)
         {   
             ctx.UserRoles.Add(new UserRolesEntity
