@@ -9,7 +9,6 @@ namespace Hotel.Domain.Entities.Users
         public string Password { get; set; }
         public string Email { get; set; }
         public bool Active { get; set; }
-        public DateTime CreatedAt { get; set; }
 
         public List<PersonsEntity?> Persons { get; set; } = new();
         public List<StaffEntity?> Staff { get; set; } = new();
