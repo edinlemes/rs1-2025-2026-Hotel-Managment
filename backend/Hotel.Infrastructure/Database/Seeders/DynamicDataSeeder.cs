@@ -1,88 +1,82 @@
-﻿//namespace Hotel.Infrastructure.Database.Seeders;
+﻿using Hotel.Domain.Entities.Users;
 
-///// <summary>
-///// Dynamic seeder koji se pokreće u runtime-u,
-///// obično pri startu aplikacije (npr. u Program.cs).
-///// Koristi se za unos demo/test podataka koji nisu dio migracije.
-///// </summary>
-//public static class DynamicDataSeeder
-//{
-//    public static async Task SeedAsync(DatabaseContext context)
-//    {
-//        // Osiguraj da baza postoji (bez migracija)
-//        await context.Database.EnsureCreatedAsync();
+namespace Hotel.Infrastructure.Database.Seeders;
 
-//        await SeedProductCategoriesAsync(context);
-//        await SeedUsersAsync(context);
-//    }
+/// <summary>
+/// Dynamic seeder koji se pokreće u runtime-u,
+/// obično pri startu aplikacije (npr. u Program.cs).
+/// Koristi se za unos demo/test podataka koji nisu dio migracije.
+/// </summary>
+public static class DynamicDataSeeder
+{
+    public static async Task SeedAsync(DatabaseContext context)
+    {
+        // Osiguraj da baza postoji (bez migracija)
+        await context.Database.EnsureCreatedAsync();
 
-//    private static async Task SeedProductCategoriesAsync(DatabaseContext context)
-//    {
-//        if (!await context.ProductCategories.AnyAsync())
-//        {
-//            context.ProductCategories.AddRange(
-//                new ProductCategoryEntity
-//                {
-//                    Name = "Računari (demo)",
-//                    //IsEnabled = true,
-//                    CreatedAtUtc = DateTime.UtcNow
-//                },
-//                new ProductCategoryEntity
-//                {
-//                    Name = "Mobilni uređaji (demo)",
-//                    IsEnabled = true,
-//                    CreatedAtUtc = DateTime.UtcNow
-//                }
-//            );
+        //await SeedProductCategoriesAsync(context);
+        await SeedUsersAsync(context);
+    }
 
-//            await context.SaveChangesAsync();
-//            Console.WriteLine("✅ Dynamic seed: product categories added.");
-//        }
-//    }
+    //    private static async Task SeedProductCategoriesAsync(DatabaseContext context)
+    //    {
+    //        if (!await context.ProductCategories.AnyAsync())
+    //        {
+    //            context.ProductCategories.AddRange(
+    //                new ProductCategoryEntity
+    //                {
+    //                    Name = "Računari (demo)",
+    //                    //IsEnabled = true,
+    //                    CreatedAtUtc = DateTime.UtcNow
+    //                },
+    //                new ProductCategoryEntity
+    //                {
+    //                    Name = "Mobilni uređaji (demo)",
+    //                    IsEnabled = true,
+    //                    CreatedAtUtc = DateTime.UtcNow
+    //                }
+    //            );
 
-//    /// <summary>
-//    /// Kreira demo korisnike ako ih još nema u bazi.
-//    /// </summary>
-//    private static async Task SeedUsersAsync(DatabaseContext context)
-//    {
-//        if (await context.Users.AnyAsync())
-//            return;
+    //            await context.SaveChangesAsync();
+    //            Console.WriteLine("✅ Dynamic seed: product categories added.");
+    //        }
+    //    }
 
-//        var hasher = new PasswordHasher<HotelUserEntity>();
+    /// <summary>
+    /// Kreira demo korisnike ako ih još nema u bazi.
+    /// </summary>
+    private static async Task SeedUsersAsync(DatabaseContext context)
+    {
+        if (await context.UserTable.AnyAsync())
+            return;
 
-//        var admin = new HotelUserEntity
-//        {
-//            Email = "admin@market.local",
-//            PasswordHash = hasher.HashPassword(null!, "Admin123!"),
-//            IsAdmin = true,
-//            IsEnabled = true,
-//        };
+        var hasher = new PasswordHasher<UsersEntity>();
 
-//        var user = new HotelUserEntity
-//        {
-//            Email = "manager@market.local",
-//            PasswordHash = hasher.HashPassword(null!, "User123!"),
-//            IsManager = true,
-//            IsEnabled = true,
-//        };
+        var admin = new UsersEntity
+        {
+            Email = "admin@market.local",
+            Password = hasher.HashPassword(null!, "Admin123!"),
+        };
 
-//        var dummyForSwagger = new HotelUserEntity
-//        {
-//            Email = "string",
-//            PasswordHash = hasher.HashPassword(null!, "string"),
-//            IsEmployee = true,
-//            IsEnabled = true,
-//        };
-//        var dummyForTests = new HotelUserEntity
-//        {
-//            Email = "test",
-//            PasswordHash = hasher.HashPassword(null!, "test123"),
-//            IsEmployee = true,
-//            IsEnabled = true,
-//        };
-//        context.Users.AddRange(admin, user, dummyForSwagger, dummyForTests);
-//        await context.SaveChangesAsync();
+        var user = new UsersEntity
+        {
+            Email = "manager@market.local",
+            Password = hasher.HashPassword(null!, "User123!"),
+        };
 
-//        Console.WriteLine("✅ Dynamic seed: demo users added.");
-//    }
-//}
+        var dummyForSwagger = new UsersEntity
+        {
+            Email = "string",
+            Password = hasher.HashPassword(null!, "string"),
+        };
+        var dummyForTests = new UsersEntity
+        {
+            Email = "test",
+            Password = hasher.HashPassword(null!, "test123"),
+        };
+        context.UserTable.AddRange(admin, user, dummyForSwagger, dummyForTests);
+        await context.SaveChangesAsync();
+
+        Console.WriteLine("✅ Dynamic seed: demo users added.");
+    }
+}

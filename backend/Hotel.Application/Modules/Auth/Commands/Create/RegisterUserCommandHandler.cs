@@ -29,6 +29,18 @@ public sealed class RegisterUserCommandHandler(
 
         ctx.UserTable.Add(user);
         await ctx.SaveChangesAsync(cancellationToken);
+
+        var person = new PersonsEntity
+        {
+            UserId = user.Id,
+            FirstName = "",
+            LastName = "",
+            MailAddress = request.Email,
+            CreatedAtUtc = DateTime.UtcNow,
+        };
+        ctx.Persons.Add(person);
+        await ctx.SaveChangesAsync(cancellationToken);
+
         // OPTIONAL: dodaj defaultnu rolu USER
         var defaultRole = await ctx.Roles.FirstOrDefaultAsync(x => x.RoleName == "User", cancellationToken);
         if (defaultRole != null)
