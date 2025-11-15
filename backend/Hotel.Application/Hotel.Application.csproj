@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Modules\Auth\Users\**" />
+    <EmbeddedResource Remove="Modules\Auth\Users\**" />
+    <None Remove="Modules\Auth\Users\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="12.0.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
     <PackageReference Include="MediatR" Version="12.5.0" />
@@ -18,10 +24,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Hotel.Domain\Hotel.Domain.csproj" />
     <ProjectReference Include="..\Hotel.Shared\Hotel.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Modules\Auth\Users\Queries\" />
   </ItemGroup>
 
 </Project>

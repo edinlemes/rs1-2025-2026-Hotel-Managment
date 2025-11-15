@@ -2,6 +2,7 @@
 using Hotel.Application.Modules.Auth.Commands.Login;
 using Hotel.Application.Modules.Auth.Commands.Logout;
 using Hotel.Application.Modules.Auth.Commands.Refresh;
+using Hotel.Application.Modules.Auth.Queries.GetById;
 
 namespace Hotel.API.Controllers.User;
 
@@ -34,5 +35,11 @@ public sealed class AuthController(ISender sender) : ControllerBase
     public async Task<ActionResult<RegisterUserCommandDto>> Register([FromBody] RegisterUserCommand command, CancellationToken ct)
     {
         return Ok(await sender.Send(command, ct));
+    }
+    [HttpGet("GetById")]
+    public async Task<ActionResult<UserGetByIdQueryDto>> GetById([FromQuery] int id, CancellationToken ct)
+    {
+        var query = new UserGetByIdQuery { Id = id };
+        return Ok(await sender.Send(query, ct));
     }
 }
