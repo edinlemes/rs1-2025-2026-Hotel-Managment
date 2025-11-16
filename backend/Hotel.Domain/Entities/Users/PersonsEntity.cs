@@ -17,5 +17,5 @@ public class PersonsEntity : BaseEntity
     public string Gender { get; set; } = null!;
     public UsersEntity? User { get; set; }
     public int UserId { get; set; }
-    public List<BookingsEntity?> Bookings { get; set; } = new();
+    public List<BookingsEntity> Bookings { get; set; } = new();
 }
