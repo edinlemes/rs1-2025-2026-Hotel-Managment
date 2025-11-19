@@ -1,4 +1,6 @@
-﻿namespace Hotel.Infrastructure.Database.Seeders;
+﻿using Hotel.Domain.Entities.Users;
+
+namespace Hotel.Infrastructure.Database.Seeders;
 
 public partial class StaticDataSeeder
 {
@@ -16,20 +18,24 @@ public partial class StaticDataSeeder
     {
         // todo: user roles
 
-        //modelBuilder.Entity<UserRoles>().HasData(new List<UserRoleEntity>
-        //{
-        //    new UserRoleEntity{
-        //        Id = 1,
-        //        Name = "Admin",
-        //        CreatedAt = dateTime,
-        //        ModifiedAt = null,
-        //    },
-        //    new UserRoleEntity{
-        //        Id = 2,
-        //        Name = "Employee",
-        //        CreatedAt = dateTime,
-        //        ModifiedAt = null,
-        //    },
-        //});
+        modelBuilder.Entity<RolesEntity>().HasData(new List<RolesEntity>
+        {
+            new RolesEntity{
+                Id = 1,
+                RoleName = "Administrator",
+                Description = "Administrator role with full permissions",
+                Active = true,
+                CreatedAtUtc = DateTime.UtcNow,
+                ModifiedAtUtc = null,
+        },
+            new RolesEntity{
+                Id = 2,
+                RoleName = "User",
+                Description = "Standard user role with limited permissions",
+                Active = true,
+                CreatedAtUtc = DateTime.UtcNow,
+                ModifiedAtUtc = null,
+            },
+        });
     }
 }

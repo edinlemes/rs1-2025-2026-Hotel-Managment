@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Hotel.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class novaBaza : Migration
+    public partial class Test1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -385,7 +387,6 @@ namespace Hotel.Infrastructure.Migrations
                     ExpiresAtUtc = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsRevoked = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    Fingerprint = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     RevokedAtUtc = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAtUtc = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -752,6 +753,15 @@ namespace Hotel.Infrastructure.Migrations
                         column: x => x.PaymentTypeId,
                         principalTable: "PaymentTypes",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "Active", "CreatedAtUtc", "Description", "IsDeleted", "ModifiedAtUtc", "RoleName" },
+                values: new object[,]
+                {
+                    { 1, true, new DateTime(2025, 11, 15, 23, 34, 31, 685, DateTimeKind.Utc).AddTicks(8708), "Administrator role with full permissions", false, null, "Administrator" },
+                    { 2, true, new DateTime(2025, 11, 15, 23, 34, 31, 685, DateTimeKind.Utc).AddTicks(8716), "Standard user role with limited permissions", false, null, "User" }
                 });
 
             migrationBuilder.CreateIndex(
