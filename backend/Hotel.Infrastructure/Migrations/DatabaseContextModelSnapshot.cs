@@ -1123,10 +1123,6 @@ namespace Hotel.Infrastructure.Migrations
                     b.Property<DateTime>("ExpiresAtUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Fingerprint")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -1189,6 +1185,26 @@ namespace Hotel.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Active = true,
+                            CreatedAtUtc = new DateTime(2025, 11, 15, 23, 34, 31, 685, DateTimeKind.Utc).AddTicks(8708),
+                            Description = "Administrator role with full permissions",
+                            IsDeleted = false,
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Active = true,
+                            CreatedAtUtc = new DateTime(2025, 11, 15, 23, 34, 31, 685, DateTimeKind.Utc).AddTicks(8716),
+                            Description = "Standard user role with limited permissions",
+                            IsDeleted = false,
+                            RoleName = "User"
+                        });
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Users.UserRolesEntity", b =>

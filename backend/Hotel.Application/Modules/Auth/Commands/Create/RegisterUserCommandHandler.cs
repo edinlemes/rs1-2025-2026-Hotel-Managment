@@ -28,21 +28,40 @@ public sealed class RegisterUserCommandHandler(
         user.Password = hasher.HashPassword(user, request.Password);
 
         ctx.UserTable.Add(user);
+
         await ctx.SaveChangesAsync(cancellationToken);
+
+        var person = new PersonsEntity
+        {
+            UserId = user.Id,
+            FirstName = "",
+            LastName = "",
+            Address = "",
+            City = "",
+            State = "",
+            ZipCode = "",
+            Country = "",
+            PhoneNumber = "",
+            MailAddress = request.Email,
+            Gender = "",
+            CreatedAtUtc = DateTime.UtcNow,
+        };
+        ctx.Persons.Add(person);
+
         // OPTIONAL: dodaj defaultnu rolu USER
         var defaultRole = await ctx.Roles.FirstOrDefaultAsync(x => x.RoleName == "User", cancellationToken);
         if (defaultRole != null)
-        {   
-            ctx.UserRoles.Add(new UserRolesEntity
+        {
+            var addRole = new UserRolesEntity
             {
                 UserId = user.Id,
                 RoleId = defaultRole.Id,
                 AssignedDate = DateTime.UtcNow,
                 Active = true
-            });
-                await ctx.SaveChangesAsync(cancellationToken);
+            };
+        ctx.UserRoles.Add(addRole);
         }
-
+        await ctx.SaveChangesAsync(cancellationToken);
         return new RegisterUserCommandDto
         {
             UserId = user.Id,
