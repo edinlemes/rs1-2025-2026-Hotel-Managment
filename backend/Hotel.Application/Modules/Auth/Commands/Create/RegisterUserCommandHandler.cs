@@ -12,14 +12,14 @@ public sealed class RegisterUserCommandHandler(
     public async Task<RegisterUserCommandDto> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
         var exists = await ctx.UserTable
-            .AnyAsync(x => x.Username == request.Username || x.Email == request.Email);
+            .AnyAsync(x => x.Email == request.Email);
 
         if (exists)
             throw new Exception("User already exists");
 
         var user = new UsersEntity
         {
-            Username = request.Username,
+            Username = request.FirstName +" "+request.LastName,
             Email = request.Email,
             Active = true,
             CreatedAtUtc = DateTime.UtcNow,
@@ -34,8 +34,8 @@ public sealed class RegisterUserCommandHandler(
         var person = new PersonsEntity
         {
             UserId = user.Id,
-            FirstName = "",
-            LastName = "",
+            FirstName = request.FirstName,
+            LastName = request.LastName,
             Address = "",
             City = "",
             State = "",
@@ -65,7 +65,7 @@ public sealed class RegisterUserCommandHandler(
         return new RegisterUserCommandDto
         {
             UserId = user.Id,
-            Username = user.Username,
+            FullName = user.Username,
             Email = user.Email
         };
     }
