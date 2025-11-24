@@ -1,8 +1,10 @@
 ﻿using Hotel.Application.Modules.Auth.Commands.Create;
+using Hotel.Application.Modules.Auth.Commands.Delete;
 using Hotel.Application.Modules.Auth.Commands.Login;
 using Hotel.Application.Modules.Auth.Commands.Logout;
 using Hotel.Application.Modules.Auth.Commands.Refresh;
 using Hotel.Application.Modules.Auth.Queries.GetById;
+using Hotel.Application.Modules.Auth.Queries.GetList;
 
 namespace Hotel.API.Controllers.User;
 
@@ -37,9 +39,24 @@ public sealed class AuthController(ISender sender) : ControllerBase
         return Ok(await sender.Send(command, ct));
     }
     [HttpGet("GetById")]
+    [AllowAnonymous]
     public async Task<ActionResult<UserGetByIdQueryDto>> GetById([FromQuery] int id, CancellationToken ct)
     {
         var query = new UserGetByIdQuery { Id = id };
+        return Ok(await sender.Send(query, ct));
+    }
+    [HttpGet("name")]
+    [AllowAnonymous]
+    public async Task<PageResult<UserGetListQueryDto>> List([FromQuery] UserGetListQuery query, CancellationToken ct)
+    {
+        var result = await sender.Send(query, ct);
+        return result;
+    }
+    [HttpDelete("DeleteById")]
+    [AllowAnonymous]
+    public async Task<ActionResult<int>> DeleteById([FromQuery] int id, CancellationToken ct)
+    {
+        var query = new DeleteUserCommand { Id = id };
         return Ok(await sender.Send(query, ct));
     }
 }
