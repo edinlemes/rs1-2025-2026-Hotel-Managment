@@ -51,8 +51,7 @@ public partial class Program
             builder.Services
                 .AddAPI(builder.Configuration, builder.Environment)
                 .AddInfrastructure(builder.Configuration, builder.Environment)
-                .AddApplication()
-                .AddScoped<Hotel.Application.Modules.Rooms.RoomsCrud>();
+                .AddApplication();
 
 
 
@@ -66,7 +65,7 @@ public partial class Program
 
                 app.UseSwagger();
                 app.UseSwaggerUI();
-        }
+            }
 
             // Global exception handler (IExceptionHandler)
             app.UseExceptionHandler();
