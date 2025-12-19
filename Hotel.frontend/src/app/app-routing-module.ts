@@ -12,12 +12,19 @@ const routes: Routes = [
     loadChildren: () => import('./modules/public/public-module').then(m => m.PublicModule)
   },
 
-  { matcher: aboutHtmlMatcher, redirectTo: 'about-us', pathMatch: 'full' }
+  { matcher: aboutHtmlMatcher, redirectTo: 'about-us', pathMatch: 'full' },
+  {matcher: contactHtmlMatcher, redirectTo: 'contact-us', pathMatch: 'full' }
 ];
 
 
 function aboutHtmlMatcher(segments: UrlSegment[]): UrlMatchResult | null {
   if (segments.length === 1 && segments[0].path === 'about-us.html') {
+    return { consumed: segments };
+  }
+  return null;
+}
+function contactHtmlMatcher(segments: UrlSegment[]): UrlMatchResult | null {
+  if (segments.length === 1 && segments[0].path === 'contact-us.html') {
     return { consumed: segments };
   }
   return null;

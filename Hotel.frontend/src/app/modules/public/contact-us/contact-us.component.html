@@ -1,0 +1,138 @@
+
+<div class="contact-page">
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-left">
+      <a routerLink="/public" class="logo-link">
+        <div class="logo-icon">🏨</div>
+        <span class="logo-text">Hotel Management System</span>
+      </a>
+    </div>
+
+     <nav class="nav-links">
+      <a routerLink="/public">Home</a>
+      <a href="hotels.html">Hoteli</a>
+      <a routerLink="/public/about-us" routerLinkActive="active">O nama</a>
+      <a routerLink="/public/contact-us" routerLinkActive="active">Kontakt</a>
+    </nav>
+
+    <div class="nav-right">
+      <button class="btn-login">Login</button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Kontakt</h1>
+      <p>Tu smo za vas — pošaljite nam poruku ili nas posjetite</p>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION -->
+  <section class="content-section">
+    <div class="container">
+      <!-- Kontakt informacije + Forma -->
+      <div class="contact-grid">
+        <!-- Kontakt informacije -->
+        <div class="info-card">
+          <h2>Kontakt informacije</h2>
+          <p class="lead">
+            Javite nam se za podršku, partnerstvo ili opće upite.
+          </p>
+
+          <div class="info-list">
+            <div class="info-item">
+              <span class="icon">📍</span>
+              <div>
+                <div class="label">Adresa</div>
+                <div class="value">Ulica Kralja Tvrtka 10, Visoko, BiH</div>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <span class="icon">☎️</span>
+              <div>
+                <div class="label">Telefon</div>
+                <div class="value"><a href="1123456+387 61 123 456"></a></div>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <span class="icon">✉️</span>
+              <div>
+                <div class="label">Email</div>
+                <div class="value"><a>mailto:info@hotelms.bainfo@hotelms.ba</a></div>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <span class="icon">⏰</span>
+              <div>
+                <div class="label">Radno vrijeme</div>
+                <div class="value">Pon–Pet: 09:00–17:00</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="socials">
+            <a>#🔵</a>
+            <a>#🟣</a>
+            <a>#🔷</a>
+          </div>
+        </div>
+
+        <!-- Forma -->
+        <div class="form-card">
+          <h2>Pošaljite poruku</h2>
+          <p class="lead">Odgovaramo u pravilu u roku 24h.</p>
+
+          <!-- Ako koristiš Reactive Forms, zamijeni s [formGroup] i (ngSubmit) -->
+          <form class="contact-form" >
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Ime i prezime</label>
+                <input id="name" name="name" type="text" placeholder="Vaše ime" required />
+              </div>
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="vaš@email.com" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="phone">Telefon (opcionalno)</label>
+                <input id="phone" name="phone" type="tel" placeholder="+387 6x xxx xxx" />
+              </div>
+              <div class="form-field">
+                <label for="subject">Tema</label>
+                <input id="subject" name="subject" type="text" placeholder="Npr. Upit za saradnju" required />
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="message">Poruka</label>
+              <textarea id="message" name="message" rows="6" placeholder="Vaša poruka..." required></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Pošalji poruku</button>
+              <span class="disclaimer">Slanjem pristajete na obradu podataka u skladu s našom politikom privatnosti.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- MAP SECTION -->
+      <div class="map-card">
+        <h3>Naša lokacija</h3>
+        <div class="map-wrapper">
+          <!-- Zamijeni src sa svojim Google Maps embed linkom -->
+          <iframe
+            title="Mapa lokacije"
+            src="https://www.google.com/maps?q=Visoko%20Bosna%20i%20Hercegovina&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            aria zadržana.></iframe>
+</div>
