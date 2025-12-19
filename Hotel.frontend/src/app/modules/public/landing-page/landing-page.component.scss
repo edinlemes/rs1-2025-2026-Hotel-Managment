@@ -1,0 +1,397 @@
+:root {
+  --primary: #c62828;
+  --primary-dark: #b71c1c;
+  --text-main: #222222;
+  --text-muted: #666666;
+  --bg-card: #ffffff;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  background: #e5e5e5;
+  color: var(--text-main);
+}
+
+/* PAGE CONTAINER */
+.page {
+  max-width: 1200px;
+  margin: 32px auto;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-bottom: 1px solid #eeeeee;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.logo-text {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  position: relative;
+  font-weight: 500;
+}
+
+/* ACTIVE I HOVER – JEDNA CRTA SAMO NA ACTIVE */
+.nav-links a.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 999px;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.btn-login {
+  border: none;
+  background: var(--primary);
+  color: #ffffff;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-login:hover {
+  background: var(--primary-dark);
+}
+
+/* HERO – TEKST PREKO SLIKE */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.hero-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  top: 0;
+  left: 0;
+}
+
+.hero-content {
+  position: absolute;
+  text-align: center;
+  color: #ffffff;
+  z-index: 10;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  border: none;
+  background: var(--primary);
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+/* POPULARNI HOTELI (HOME PAGE) */
+.popular-hotels {
+  padding: 32px 40px 24px;
+  background: #ffffff;
+}
+
+.popular-hotels h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.hotel-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.hotel-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.hotel-info {
+  padding: 12px 14px 14px;
+}
+
+.hotel-info h3 {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.hotel-rating {
+  font-size: 13px;
+  color: var(--primary);
+}
+
+/* FEATURES */
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 24px 40px 28px;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  background: #ffffff;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.feature-icon {
+  font-size: 28px;
+  color: var(--primary);
+}
+
+.feature-text {
+  color: var(--text-main);
+}
+
+/* FOOTER */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px 20px;
+  font-size: 12px;
+  background: #ffffff;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.footer-icons a {
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+/* LOGIN / REGISTER (ako budeš pravio login.html) */
+.auth-page {
+  padding: 40px 0;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.auth-box {
+  width: 380px;
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 999px;
+  background: #dddddd;
+}
+
+.tab.active {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cccccc;
+}
+
+.hidden {
+  display: none;
+}
+
+/* RESPONSIVE (osnovni) */
+@media (max-width: 900px) {
+  .page {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .hotel-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nav-links {
+    display: none; /* mobilna navigacija nije fokus */
+  }
+
+  .hotel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.auth-form select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  border: 1px solid #d5d5d5;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  background: #fff;
+  transition: 0.25s ease;
+  color: #333;
+  cursor: pointer;
+}
+
+.auth-form select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.auth-form select option {
+  background: #fff;
+  color: #333;
+  font-size: 15px;
+}
