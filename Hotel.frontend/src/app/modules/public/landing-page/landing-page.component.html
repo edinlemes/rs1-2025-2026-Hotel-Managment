@@ -1,45 +1,131 @@
-<div class="landing-page">
-  <header class="header">
-    <div class="container">
-      <h1>Welcome to Hotel Management</h1>
-      <nav class="navbar">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#rooms">Rooms</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<!DOCTYPE html>
+<html lang="bs">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="landing-page.component.scss" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <!-- NAVBAR -->
+      <header class="navbar">
+        <div class="nav-left">
+          <a href="index.html" class="logo-link">
+            <div class="logo-icon">🏨</div>
+            <span class="logo-text">Hotel Management System</span>
+          </a>
+        </div>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Experience Luxury Hospitality</h2>
-      <p>Book your perfect stay with us</p>
-      <button class="btn btn-primary">Book Now</button>
-    </div>
-  </section>
+        <nav class="nav-links">
+          <a href="index.html" class="active">Home</a>
+          <a href="hotels.html">Hoteli</a>
+          <a href="#">O nama</a>
+          <a href="#">Kontakt</a>
+        </nav>
 
-  <section class="features">
-    <h3>Why Choose Us?</h3>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h4>5-Star Rooms</h4>
-        <p>Comfortable and luxurious accommodations</p>
-      </div>
-      <div class="feature-card">
-        <h4>24/7 Support</h4>
-        <p>Round-the-clock customer service</p>
-      </div>
-      <div class="feature-card">
-        <h4>Best Prices</h4>
-        <p>Competitive rates with special offers</p>
-      </div>
-    </div>
-  </section>
+        <div class="nav-right">
+          <button class="btn-login" onclick="location.href='login.html'">
+            Login
+          </button>
+        </div>
+      </header>
 
-  <footer class="footer">
-    <p>&copy; 2025 Hotel Management System. All rights reserved.</p>
-  </footer>
-</div>
+      <!-- HERO -->
+      <section class="hero">
+        <img
+          src="https://images.pexels.com/photos/261187/pexels-photo-261187.jpeg"
+          alt="Hotel sa bazenom"
+          class="hero-image"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1>Rezervišite svoj boravak sada</h1>
+          <button class="btn-primary" onclick="location.href='hotels.html'">
+            Rezerviši sada
+          </button>
+        </div>
+      </section>
+
+      <!-- POPULARNI HOTELI -->
+      <section class="popular-hotels">
+        <h2>Popularni hoteli</h2>
+        <div class="hotel-grid">
+          <article class="hotel-card">
+            <img
+              src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg"
+              alt="Hotel"
+            />
+            <div class="hotel-info">
+              <h3>Hotel Aurora</h3>
+              <div class="hotel-rating">★★★★★</div>
+            </div>
+          </article>
+
+          <article class="hotel-card">
+            <img
+              src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg"
+              alt="Hotel"
+            />
+            <div class="hotel-info">
+              <h3>City View Hotel</h3>
+              <div class="hotel-rating">★★★★☆</div>
+            </div>
+          </article>
+
+          <article class="hotel-card">
+            <img
+              src="https://images.pexels.com/photos/261395/pexels-photo-261395.jpeg"
+              alt="Hotel"
+            />
+            <div class="hotel-info">
+              <h3>Riverside Resort</h3>
+              <div class="hotel-rating">★★★★★</div>
+            </div>
+          </article>
+
+          <article class="hotel-card">
+            <img
+              src="https://images.pexels.com/photos/237371/pexels-photo-237371.jpeg"
+              alt="Hotel"
+            />
+            <div class="hotel-info">
+              <h3>Grand Palace</h3>
+              <div class="hotel-rating">★★★★☆</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="features">
+        <div class="feature">
+          <div class="feature-icon">🛏️</div>
+          <div class="feature-text">Udobne sobe</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📶</div>
+          <div class="feature-text">Besplatan Wi-Fi</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🍽️</div>
+          <div class="feature-text">Hotelski restoran</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🏊</div>
+          <div class="feature-text">Bazen i spa</div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <span>© 2025 Hotel Management System</span>
+      </footer>
+    </div>
+  </body>
+</html>
