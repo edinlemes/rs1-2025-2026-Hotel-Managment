@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { PublicRoutingModule } from './public-routing-module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { AboutUs } from './about-us/about-us';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
-    AboutUs
+    AboutUsComponent
   ],
   imports: [
     LandingPageComponent,

@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: LandingPageComponent
+  },
+  {
+    path: 'about-us',
+    loadComponent: () => import('./about-us/about-us.component').then(m => m.AboutUsComponent)
   }
 ];
 
