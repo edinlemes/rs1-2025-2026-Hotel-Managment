@@ -5,10 +5,9 @@ import { PublicRoutingModule } from './public-routing-module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
-  declarations: [
-    LandingPageComponent
-  ],
+  declarations: [],
   imports: [
+    LandingPageComponent,
     CommonModule,
     PublicRoutingModule
   ]
