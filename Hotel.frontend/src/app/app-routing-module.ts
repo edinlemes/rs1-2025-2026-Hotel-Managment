@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, UrlMatchResult, UrlSegment } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -10,11 +10,23 @@ const routes: Routes = [
   {
     path: 'public',
     loadChildren: () => import('./modules/public/public-module').then(m => m.PublicModule)
-  }
+  },
+
+  { matcher: aboutHtmlMatcher, redirectTo: 'about-us', pathMatch: 'full' }
 ];
 
+
+function aboutHtmlMatcher(segments: UrlSegment[]): UrlMatchResult | null {
+  if (segments.length === 1 && segments[0].path === 'about-us.html') {
+    return { consumed: segments };
+  }
+  return null;
+}
+
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)
+],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
