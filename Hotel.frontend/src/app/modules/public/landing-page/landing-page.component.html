@@ -16,16 +16,16 @@
       <!-- NAVBAR -->
       <header class="navbar">
         <div class="nav-left">
-          <a href="index.html" class="logo-link">
+          <a routerLink="/public" class="logo-link">
             <div class="logo-icon">🏨</div>
             <span class="logo-text">Hotel Management System</span>
           </a>
         </div>
 
         <nav class="nav-links">
-          <a href="index.html" class="active">Home</a>
+          <a routerLink="/public" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
           <a href="hotels.html">Hoteli</a>
-          <a href="#">O nama</a>
+          <a routerLink="/public/about-us" routerLinkActive="active">O nama</a>
           <a href="#">Kontakt</a>
         </nav>
 

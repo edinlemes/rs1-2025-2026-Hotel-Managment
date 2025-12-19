@@ -7,10 +7,10 @@ import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
+    LandingPageComponent,
     AboutUsComponent
   ],
   imports: [
-    LandingPageComponent,
     CommonModule,
     PublicRoutingModule
   ]
