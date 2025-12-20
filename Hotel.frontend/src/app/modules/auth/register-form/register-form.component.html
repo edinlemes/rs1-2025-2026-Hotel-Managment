@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="bs">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login | Hotel Management System</title>
+    style.css
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      /* Pomoćni stil da bude čitljivo i bez eksternog CSS-a, možeš ukloniti ako imaš style.css */
+      .hidden { display: none; }
+      body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: #f7f7f8; color: #1f2937; }
+      .navbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #fff; border-bottom: 1px solid #e5e7eb; }
+      .logo-link { display: flex; align-items: center; gap: 8px; text-decoration: none; color: inherit; }
+      .nav-links a { text-decoration: none; color: #374151; margin-left: 14px; }
+      .nav-links a:hover { color: #2563eb; }
+      .auth-container { display: flex; justify-content: center; padding: 32px 16px; }
+      .auth-box { width: 100%; max-width: 560px; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+      .auth-tabs { display: flex; border-bottom: 1px solid #e5e7eb; }
+      .tab { flex: 1; padding: 12px; background: transparent; border: 0; cursor: pointer; font-weight: 600; color: #6b7280; }
+      .tab.active { color: #2563eb; border-bottom: 2px solid #2563eb; }
+      .auth-form { padding: 20px; }
+      input, select, button { width: 100%; box-sizing: border-box; }
+      input, select { padding: 10px 12px; margin: 8px 0; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; }
+      .btn-primary { padding: 12px; margin-top: 10px; border: 0; border-radius: 8px; background: #2563eb; color: #fff; font-weight: 600; cursor: pointer; }
+      .btn-primary:hover { filter: brightness(1.05); }
+    </style>
+  </head>
+  <body>
+    <div class="page auth-page">
+      <!-- NAVBAR -->
+      <header class="navbar">
+        <div class="nav-left">
+            <div class="logo-icon">🏨</div>
+            <span class="logo-text">Hotel Management System</span>
+        </div>
+        <nav class="nav-links" aria-label="Glavna navigacija">
+          <a>Početna</a>
+          <a>Hoteli</a>
+          <a>O nama</a>
+          <a>Kontakt</a>
+        </nav>
+      </header>
+
+      <main class="auth-container">
+        <div class="auth-box">
+          <div class="auth-tabs">
+            <button type="button" class="tab active" id="tabLogin">Login</button>
+            <button type="button" class="tab" id="tabRegister">Registracija</button>
+          </div>
+
+          <!-- LOGIN FORMA -->
+          <form class="auth-form" id="loginForm">
+            <h2>Prijava</h2>
+            <input type="email" id="loginEmail" placeholder="Email" required />
+            <input type="password" id="loginPassword" placeholder="Šifra" required />
+            <button type="submit" class="btn-primary">Login</button>
+          </form>
+
+          <!-- REGISTER FORMA — FULL BAZA -->
+          <form class="hidden auth-form" id="registerForm">
+            <h2>Kreiraj nalog</h2>
+
+            <h3>Podaci o korisniku</h3>
+            <input type="text" id="regFirstName" placeholder="Ime" required />
+            <input type="text" id="regLastName" placeholder="Prezime" required />
+            <input type="text" id="regAddress" placeholder="Adresa" required />
+            <input type="text" id="regCity" placeholder="Grad" required />
+            <input type="text" id="regState" placeholder="Kanton" required />
+            <input type="text" id="regZip" placeholder="Poštanski broj" required />
+            <input type="text" id="regCountry" placeholder="Država" required />
+            <input type="text" id="regPhone" placeholder="Telefon" required />
+            <input type="email" id="regMail" placeholder="Email adresa" required />
+
+            <select id="regGender" required>
+              <option value="">Odaberi spol</option>
+              <option value="M">Muški</option>
+              <option value="F">Ženski</option>
+            </select>
+
+            <h3>Podaci za prijavu</h3>
+            <input type="text" id="regUsername" placeholder="Korisničko ime" required />
+            <input type="password" id="regPassword" placeholder="Šifra" required />
+
+            <button type="submit" class="btn-primary">Registruj se</button>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // Tab prebacivanje (bez inline onclick)
+      (function initTabs() {
+        const tabLogin = document.getElementById("tabLogin");
+        const tabRegister = document.getElementById("tabRegister");
+        const loginForm = document.getElementById("loginForm");
+        const registerForm = document.getElementById("registerForm");
+
+        function showLogin() {
+          loginForm.classList.remove("hidden");
+          registerForm.classList.add("hidden");
+          tabLogin.classList.add("active");
+          tabRegister.classList.remove("active");
+        }
+
+        function showRegister() {
+          registerForm.classList.remove("hidden");
+          loginForm.classList.add("hidden");
+          tabRegister.classList.add("active");
+          tabLogin.classList.remove("active");
+        }
+
+        tabLogin.addEventListener("click", showLogin);
+        tabRegister.addEventListener("click", showRegister);
+      })();
+
+      // Login simulacija
+      (function initLogin() {
+        const loginForm = document.getElementById("loginForm");
+        loginForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          localStorage.setItem("loggedIn", "true");
+          window.location.href = "index.html";
+        });
+      })();
+
+      // Registracija simulacija
+      (function initRegister() {
+        const registerForm = document.getElementById("registerForm");
+        registerForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const newUser = {
+            FirstName: document.getElementById("regFirstName").value,
+            LastName: document.getElementById("regLastName").value,
+            Address: document.getElementById("regAddress").value,
+            City: document.getElementById("regCity").value,
+            State: document.getElementById("regState").value,
+            ZipCode: document.getElementById("regZip").value,
+            Country: document.getElementById("regCountry").value,
+            PhoneNumber: document.getElementById("regPhone").value,
+            MailAddress: document.getElementById("regMail").value, // zadržano radi kompatibilnosti s tvojim nazivima
+            Gender: document.getElementById("regGender").value,
+            Username: document.getElementById("regUsername").value,
+            Password: document.getElementById("regPassword").value,
+            Email: document.getElementById("regMail").value,
+            CreatedAt: new Date().toISOString(),
+          };
+
+          // Spasimo korisnika (simulacija baze)
+          localStorage.setItem("loggedInUser", JSON.stringify(newUser));
+          localStorage.setItem("loggedIn", "true");
+
+          window.location.href = "index.html";
+        });
+      })();
+    </script>
+  </body>
+</html>
