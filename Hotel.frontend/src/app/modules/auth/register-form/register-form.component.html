@@ -29,17 +29,26 @@
   <body>
     <div class="page auth-page">
       <!-- NAVBAR -->
-      <header class="navbar">
+     <header class="navbar">
         <div class="nav-left">
+          <a routerLink="/public" class="logo-link">
             <div class="logo-icon">🏨</div>
             <span class="logo-text">Hotel Management System</span>
+          </a>
         </div>
-        <nav class="nav-links" aria-label="Glavna navigacija">
-          <a>Početna</a>
-          <a>Hoteli</a>
-          <a>O nama</a>
-          <a>Kontakt</a>
+
+        <nav class="nav-links">
+          <a routerLink="/public" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+          <a href="hotels.html">Hoteli</a>
+          <a routerLink="/public/about-us" routerLinkActive="active">O nama</a>
+          <a routerLink="/public/contact-us" routerLinkActive="active">Kontakt</a>
         </nav>
+
+        <div class="nav-right">
+          <button class="btn-login" routerLink="/auth/register" routerLinkActive="active">
+            Login
+          </button>
+        </div>
       </header>
 
       <main class="auth-container">

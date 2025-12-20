@@ -1,7 +1,7 @@
 ﻿using Hotel.Application.Modules.Auth.Commands.Login;
 
 namespace Hotel.Application.Modules.Auth.Commands.Create;
-
+using FluentValidation;
 /// <summary>
 /// FluentValidation validator for <see cref="RegisterUserCommand"/>.
 /// </summary>

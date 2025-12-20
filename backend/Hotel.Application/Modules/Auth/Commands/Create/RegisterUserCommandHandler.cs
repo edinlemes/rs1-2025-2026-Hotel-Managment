@@ -1,6 +1,8 @@
 ﻿using Hotel.Application.Modules.Auth.Commands.Login;
 using Hotel.Application.Modules.Auth.Roles.Commands.Create;
+using Hotel.Application.Modules.Auth.Roles.Querries.GetList;
 using Hotel.Domain.Entities.Users;
+using MediatR;
 
 namespace Hotel.Application.Modules.Auth.Commands.Create;
 
@@ -36,14 +38,14 @@ public sealed class RegisterUserCommandHandler(
             UserId = user.Id,
             FirstName = request.FirstName,
             LastName = request.LastName,
-            Address = "",
-            City = "",
-            State = "",
-            ZipCode = "",
-            Country = "",
-            PhoneNumber = "",
+            Address = request.Address,
+            City = request.City,
+            State = request.State,
+            ZipCode = request.ZipCode,
+            Country = request.Country,
+            PhoneNumber = request.PhoneNumber,
             MailAddress = request.Email,
-            Gender = "",
+            Gender = request.Gender,
             CreatedAtUtc = DateTime.UtcNow,
         };
         ctx.Persons.Add(person);
@@ -65,7 +67,7 @@ public sealed class RegisterUserCommandHandler(
         return new RegisterUserCommandDto
         {
             UserId = user.Id,
-            FullName = user.Username,
+            FirstName = user.Username,
             Email = user.Email
         };
     }
