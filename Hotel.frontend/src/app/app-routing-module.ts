@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'public',
     loadChildren: () => import('./modules/public/public-module').then(m => m.PublicModule)
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./modules/auth/auth-module').then(m => m.AuthModule)
+  },
 
   { matcher: aboutHtmlMatcher, redirectTo: 'about-us', pathMatch: 'full' },
   {matcher: contactHtmlMatcher, redirectTo: 'contact-us', pathMatch: 'full' }
