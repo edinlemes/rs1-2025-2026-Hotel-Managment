@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@source "./src/**/*.{html,ts}";
+
+@theme {
+	--color-brand: #1769aa;
+	--color-brand-2: #c62828;
+	--color-brand-2-dark: #b71c1c;
+	--color-border: #e5e7eb;
+	--color-surface: #f8fafc;
+	--color-text: #111827;
+	--color-muted: #6b7280;
+	--color-link: #374151;
+	--color-danger: #991b1b;
+	--color-danger-bg: #fee2e2;
+	--color-danger-border: #fecaca;
+	--color-success: #065f46;
+	--color-success-bg: #ecfdf5;
+	--color-success-border: #a7f3d0;
+	--shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+	--shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.08);
+	--radius-lg: 16px;
+	--radius-md: 12px;
+	--radius-sm: 8px;
+	--font-sans: "Inter", "Poppins", system-ui, -apple-system, "Segoe UI", "Roboto", sans-serif;
+	--font-poppins: "Poppins", "Inter", system-ui, -apple-system, "Segoe UI", "Roboto", sans-serif;
+}
+
+@layer base {
+	:root {
+		color-scheme: light;
+	}
+
+	body {
+		@apply min-h-screen bg-[var(--color-surface)] text-[var(--color-text)] font-sans antialiased;
+	}
+
+	a {
+		@apply text-inherit;
+	}
+}
