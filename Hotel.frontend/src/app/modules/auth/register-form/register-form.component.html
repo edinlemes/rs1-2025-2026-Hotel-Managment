@@ -1,85 +1,123 @@
 
-<div class="page auth-page">
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="nav-left">
-      <a routerLink="/public" class="logo-link">
-        <div class="logo-icon">🏨</div>
-        <span class="logo-text">Hotel Management System</span>
-      </a>
-    </div>
+<div class="min-h-screen bg-[var(--color-surface)]">
 
-    <nav class="nav-links">
-      <a
-        routerLink="/public"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        Home
-      </a>
 
-      <!-- POPRAVLJENO: bio je razbijen <a> tag -->
-      <a routerLink="/public/hotels" routerLinkActive="active">Hoteli</a>
-
-      <a routerLink="/public/about-us" routerLinkActive="active">O nama</a>
-      <a routerLink="/public/contact-us" routerLinkActive="active">Kontakt</a>
-    </nav>
-
-    <div class="nav-right">
-      <!-- (opcionalno) Labela je "Login", ali vodi na /auth/register – odluči da li želiš da piše 'Registracija' -->
-      <button class="btn-login" routerLink="/auth/register" routerLinkActive="active">
-        Login
-      </button>
-    </div>
-  </header>
-
- 
-<main class="auth-container">
-  <div class="auth-box">
-
-<div class="auth-tabs">
-  <button type="button" class="tab" [class.active]="activeTab==='login'" (click)="setTab('login')">Login</button>
-  <button type="button" class="tab" [class.active]="activeTab==='register'" (click)="setTab('register')">Registracija</button>
-</div>
-
-<form *ngIf="form" class="auth-form" [formGroup]="form" (ngSubmit)="onSubmit()">
-  <ng-container *ngFor="let field of currentFields">
-    <ng-container [ngSwitch]="field.type">
-
-      <div *ngSwitchCase="'text'">
-        <label [for]="field.key">{{ field.label }}</label>
-        <input [id]="field.key" type="text" [formControlName]="field.key" />
+  <main class="flex justify-center bg-[var(--color-surface)] px-3 py-8 sm:px-4 sm:py-12">
+    <div class="w-full max-w-2xl overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-white shadow-[var(--shadow-card)]">
+      <div class="flex border-b border-[var(--color-border)]">
+        <button
+          type="button"
+          class="flex-1 border-b-2 border-transparent px-4 py-3 text-sm font-semibold text-[var(--color-muted)] transition hover:text-[var(--color-brand)] sm:text-base"
+          [ngClass]="activeTab === 'login' ? 'border-[var(--color-brand)] text-[var(--color-brand)]' : ''"
+          (click)="setTab('login')"
+        >
+          Login
+        </button>
+        <button
+          type="button"
+          class="flex-1 border-b-2 border-transparent px-4 py-3 text-sm font-semibold text-[var(--color-muted)] transition hover:text-[var(--color-brand)] sm:text-base"
+          [ngClass]="activeTab === 'register' ? 'border-[var(--color-brand)] text-[var(--color-brand)]' : ''"
+          (click)="setTab('register')"
+        >
+          Registracija
+        </button>
       </div>
 
-      <div *ngSwitchCase="'email'">
-        <label [for]="field.key">{{ field.label }}</label>
-        <input [id]="field.key" type="email" [formControlName]="field.key" autocomplete="email" />
-      </div>
+      <form *ngIf="form" class="space-y-4 p-5 sm:p-6" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <ng-container *ngFor="let field of currentFields">
+          <ng-container [ngSwitch]="field.type">
+            <div *ngSwitchCase="'text'" class="space-y-1">
+              <label [for]="field.key" class="block text-sm font-medium text-[var(--color-link)]">
+                {{ field.label }}
+              </label>
+              <input
+                [id]="field.key"
+                type="text"
+                [formControlName]="field.key"
+                [class.border-[var(--color-danger)]]="isFieldInvalid(field.key)"
+                class="w-full rounded-[var(--radius-sm)] border border-[var(--color-border)] bg-white px-3 py-2 text-sm text-[var(--color-text)] transition focus:border-[var(--color-brand)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)]/20"
+              />
+              <p *ngIf="isFieldInvalid(field.key)" class="text-xs text-[var(--color-danger)] mt-1">
+                {{ getErrorMessage(field.key) }}
+              </p>
+            </div>
 
-      <div *ngSwitchCase="'password'">
-        <label [for]="field.key">{{ field.label }}</label>
-        <input [id]="field.key" type="password" [formControlName]="field.key" autocomplete="current-password" />
-      </div>
+            <div *ngSwitchCase="'email'" class="space-y-1">
+              <label [for]="field.key" class="block text-sm font-medium text-[var(--color-link)]">
+                {{ field.label }}
+              </label>
+              <input
+                [id]="field.key"
+                type="email"
+                autocomplete="email"
+                [formControlName]="field.key"
+                [class.border-[var(--color-danger)]]="isFieldInvalid(field.key)"
+                class="w-full rounded-[var(--radius-sm)] border border-[var(--color-border)] bg-white px-3 py-2 text-sm text-[var(--color-text)] transition focus:border-[var(--color-brand)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)]/20"
+              />
+              <p *ngIf="isFieldInvalid(field.key)" class="text-xs text-[var(--color-danger)] mt-1">
+                {{ getErrorMessage(field.key) }}
+              </p>
+            </div>
 
-      <div *ngSwitchCase="'select'">
-        <label [for]="field.key">{{ field.label }}</label>
-        <select [id]="field.key" [formControlName]="field.key">
-          <option value="">{{ field.placeholder || 'Odaberi...' }}</option>
-          <ng-container *ngIf="field.options?.length">
-            <option *ngFor="let opt of field.options" [value]="opt.value">{{ opt.label }}</option>
+            <div *ngSwitchCase="'password'" class="space-y-1">
+              <label [for]="field.key" class="block text-sm font-medium text-[var(--color-link)]">
+                {{ field.label }}
+              </label>
+              <input
+                [id]="field.key"
+                type="password"
+                autocomplete="current-password"
+                [formControlName]="field.key"
+                [class.border-[var(--color-danger)]]="isFieldInvalid(field.key)"
+                class="w-full rounded-[var(--radius-sm)] border border-[var(--color-border)] bg-white px-3 py-2 text-sm text-[var(--color-text)] transition focus:border-[var(--color-brand)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)]/20"
+              />
+              <p *ngIf="isFieldInvalid(field.key)" class="text-xs text-[var(--color-danger)] mt-1">
+                {{ getErrorMessage(field.key) }}
+              </p>
+            </div>
+
+            <div *ngSwitchCase="'select'" class="space-y-1">
+              <label [for]="field.key" class="block text-sm font-medium text-[var(--color-link)]">
+                {{ field.label }}
+              </label>
+              <select
+                [id]="field.key"
+                [formControlName]="field.key"
+                [class.border-[var(--color-danger)]]="isFieldInvalid(field.key)"
+                class="w-full rounded-[var(--radius-sm)] border border-[var(--color-border)] bg-white px-3 py-2 text-sm text-[var(--color-text)] transition focus:border-[var(--color-brand)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)]/20"
+              >
+                <option value="">{{ field.placeholder || 'Odaberi...' }}</option>
+                <ng-container *ngIf="field.options?.length">
+                  <option *ngFor="let opt of field.options" [value]="opt.value">{{ opt.label }}</option>
+                </ng-container>
+              </select>
+              <p *ngIf="isFieldInvalid(field.key)" class="text-xs text-[var(--color-danger)] mt-1">
+                {{ getErrorMessage(field.key) }}
+              </p>
+            </div>
+
+            <div *ngSwitchDefault>
+              <p class="text-sm text-[var(--color-danger)]">Nepodržan tip: {{ field.type }}</p>
+            </div>
           </ng-container>
-        </select>
-      </div>
+        </ng-container>
 
-      <div *ngSwitchDefault>
-        <p class="warning">Nepodržan tip: {{ field.type }}</p>
-      </div>
+        <div *ngIf="successMsg" class="rounded-[var(--radius-sm)] border border-green-200 bg-green-50 px-3 py-2 text-sm text-green-700">
+          {{ successMsg }}
+        </div>
 
-    </ng-container>
-  </ng-container>
+        <div *ngIf="errorMsg" class="rounded-[var(--radius-sm)] border border-[var(--color-danger-border)] bg-[var(--color-danger-bg)] px-3 py-2 text-sm text-[var(--color-danger)]">
+          {{ errorMsg }}
+        </div>
 
-  <button type="submit" class="btn-primary">{{ activeTab === 'login' ? 'Login' : 'Registruj se' }}</button>
-</form>
-</div>
-</main>
+        <button
+          type="submit"
+          [disabled]="isLoading"
+          class="w-full rounded-[var(--radius-sm)] bg-[var(--color-brand)] px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 active:translate-y-px"
+        >
+          {{ isLoading ? (activeTab === 'login' ? 'Prijava...' : 'Slanje...') : (activeTab === 'login' ? 'Login' : 'Registruj se') }}
+        </button>
+      </form>
+    </div>
+  </main>
 </div>

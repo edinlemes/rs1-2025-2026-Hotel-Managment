@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../../core/auth/auth.service';
 
 type FieldType = 'text' | 'email' | 'password' | 'select';
 interface FormField {
@@ -21,50 +22,51 @@ interface FormField {
 @Component({
   selector: 'app-register-form',
   standalone: false,
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.scss'],
+  templateUrl: './register-form.component.html'
 })
 
 export class RegisterFormComponent implements OnInit {
   activeTab: 'login' | 'register' = 'login';
   form!: FormGroup;
+  isLoading = false;
+  errorMsg: string | null = null;
+  successMsg: string | null = null;
 
   // Konfiguracija polja za LOGIN
   readonly loginFields: FormField[] = [
     { key: 'loginEmail', type: 'email', label: 'Email', placeholder: 'Email', required: true,
       validators: [Validators.email] },
     { key: 'loginPassword', type: 'password', label: 'Šifra', placeholder: 'Šifra', required: true,
-      validators: [Validators.minLength(6)] },
+      validators: [Validators.minLength(8)] },
   ];
 
-  // Konfiguracija polja za REGISTRACIJU (zadržao sam tvoje IDs: regFirstName, regMail, ...)
+  // Konfiguracija polja za REGISTRACIJU
   readonly registerFields: FormField[] = [
-    { key: 'regFirstName', type: 'text',     label: 'Ime',              placeholder: 'Ime', required: true },
-    { key: 'regLastName',  type: 'text',     label: 'Prezime',          placeholder: 'Prezime', required: true },
-    { key: 'regAddress',   type: 'text',     label: 'Adresa',           placeholder: 'Adresa', required: true },
-    { key: 'regCity',      type: 'text',     label: 'Grad',             placeholder: 'Grad', required: true },
-    { key: 'regState',     type: 'text',     label: 'Kanton',           placeholder: 'Kanton', required: true },
-    { key: 'regZip',       type: 'text',     label: 'Poštanski broj',   placeholder: 'Poštanski broj', required: true },
-    { key: 'regCountry',   type: 'text',     label: 'Država',           placeholder: 'Država', required: true },
-    { key: 'regPhone',     type: 'text',     label: 'Telefon',          placeholder: 'Telefon', required: true,
-      validators: [Validators.pattern(/^[0-9+()\s-]{6,}$/)] },
-    { key: 'regMail',      type: 'email',    label: 'Email adresa',     placeholder: 'Email adresa', required: true,
-      validators: [Validators.email] },
-    { key: 'regGender',    type: 'select',   label: 'Spol',             placeholder: 'Odaberi spol', required: true,
+    { key: 'firstName', type: 'text', label: 'Ime', placeholder: 'Ime', required: true },
+    { key: 'lastName', type: 'text', label: 'Prezime', placeholder: 'Prezime', required: true },
+    { key: 'address', type: 'text', label: 'Adresa', placeholder: 'Adresa', required: true },
+    { key: 'city', type: 'text', label: 'Grad', placeholder: 'Grad', required: true },
+    { key: 'state', type: 'text', label: 'Kanton', placeholder: 'Kanton', required: true },
+    { key: 'zipCode', type: 'text', label: 'Poštanski broj', placeholder: 'Poštanski broj', required: true,
+      validators: [Validators.pattern(/^[0-9]+$/)] },
+    { key: 'country', type: 'text', label: 'Država', placeholder: 'Država', required: true },
+    { key: 'phoneNumber', type: 'text', label: 'Telefon', placeholder: 'Telefon', required: true,
+      validators: [Validators.pattern(/^[0-9+()\s-]+$/)] },
+    { key: 'gender', type: 'select', label: 'Spol', placeholder: 'Odaberi spol', required: true,
       options: [
-        { label: 'Muški',  value: 'M' },
+        { label: 'Muški', value: 'M' },
         { label: 'Ženski', value: 'F' },
       ]},
-    { key: 'regUsername',  type: 'text',     label: 'Korisničko ime',   placeholder: 'Korisničko ime', required: true,
-      validators: [Validators.minLength(3)] },
-    { key: 'regPassword',  type: 'password', label: 'Šifra',            placeholder: 'Šifra (min 6)', required: true,
-      validators: [Validators.minLength(6)] },
+    { key: 'email', type: 'email', label: 'Email adresa', placeholder: 'Email adresa', required: true,
+      validators: [Validators.email] },
+    { key: 'password', type: 'password', label: 'Šifra', placeholder: 'Šifra (minimum 8 znakova)', required: true,
+      validators: [Validators.minLength(8)] },
   ];
 
   // Trenutna lista polja prema aktivnom tabu
   currentFields: FormField[] = this.loginFields;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {
     this.buildForm(this.currentFields);
@@ -76,6 +78,8 @@ export class RegisterFormComponent implements OnInit {
       this.activeTab = tab;
       this.currentFields = tab === 'login' ? this.loginFields : this.registerFields;
       this.buildForm(this.currentFields);
+      this.errorMsg = null;
+      this.successMsg = null;
     }
   }
 
@@ -98,36 +102,97 @@ export class RegisterFormComponent implements OnInit {
       return;
     }
 
+    this.isLoading = true;
+    this.errorMsg = null;
+    this.successMsg = null;
+
     if (this.activeTab === 'login') {
-      const email = this.form.value['loginEmail'];
-      // U tvom demo kodu samo setuješ "loggedIn"
-      localStorage.setItem('loggedIn', 'true');
-      // Preusmjeravanje (koristi Angular Router umjesto window.location.href)
-      this.router.navigate(['/public']);
+      const payload = {
+        email: this.form.value['loginEmail'],
+        password: this.form.value['loginPassword'],
+      };
+
+      this.auth
+        .login(payload)
+        .then(() => {
+          this.router.navigate(['/public']);
+        })
+        .catch((err) => {
+          const msg = (err?.response?.data?.message as string) || 'Neispravan email ili šifra.';
+          this.errorMsg = msg;
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
       return;
     }
 
-    // Registracija – napravi objekat kao u tvom primjeru
+    // Registracija - poziv backend API-ja
     const v = this.form.value;
-    const newUser = {
-      FirstName: v['regFirstName'],
-      LastName: v['regLastName'],
-      Address: v['regAddress'],
-      City: v['regCity'],
-      State: v['regState'],
-      ZipCode: v['regZip'],
-      Country: v['regCountry'],
-      PhoneNumber: v['regPhone'],
-      MailAddress: v['regMail'], // kompatibilnost s tvojim nazivima
-      Gender: v['regGender'],
-      Username: v['regUsername'],
-      Password: v['regPassword'],
-      Email: v['regMail'],
-      CreatedAt: new Date().toISOString(),
+    const registerPayload = {
+      firstName: v['firstName'],
+      lastName: v['lastName'],
+      address: v['address'],
+      city: v['city'],
+      state: v['state'],
+      zipCode: v['zipCode'],
+      country: v['country'],
+      phoneNumber: v['phoneNumber'],
+      gender: v['gender'],
+      email: v['email'],
+      password: v['password'],
     };
 
-    localStorage.setItem('loggedInUser', JSON.stringify(newUser));
-    localStorage.setItem('loggedIn', 'true');
-    this.router.navigate(['/public']);
+    this.auth
+      .register(registerPayload)
+      .then((response) => {
+        this.successMsg = 'Registracija uspješna! Možete se prijaviti.';
+        this.form.reset();
+        // Opciono: nakon par sekundi prebaci na login tab
+        setTimeout(() => {
+          this.setTab('login');
+        }, 2000);
+      })
+      .catch((err) => {
+        const msg = (err?.response?.data?.message as string) || 'Registracija nije uspjela. Pokušajte ponovo.';
+        this.errorMsg = msg;
+      })
+      .finally(() => {
+        this.isLoading = false;
+      });
+  }
+
+  // Helper metode za provjeru validacije
+  isFieldInvalid(fieldKey: string): boolean {
+    const control = this.form.get(fieldKey);
+    return !!(control && control.invalid && (control.dirty || control.touched));
+  }
+
+  getErrorMessage(fieldKey: string): string {
+    const control = this.form.get(fieldKey);
+    if (!control || !control.errors) return '';
+
+    const field = this.currentFields.find(f => f.key === fieldKey);
+    const label = field?.label || fieldKey;
+
+    if (control.errors['required']) {
+      return `${label} je obavezno polje.`;
+    }
+    if (control.errors['email']) {
+      return 'Unesite ispravnu email adresu.';
+    }
+    if (control.errors['minlength']) {
+      const minLength = control.errors['minlength'].requiredLength;
+      return `${label} mora imati najmanje ${minLength} znakova.`;
+    }
+    if (control.errors['pattern']) {
+      if (fieldKey === 'phoneNumber') {
+        return 'Telefon mora sadržavati samo brojeve i znakove +, -, (), razmak.';
+      }
+      if (fieldKey === 'zipCode') {
+        return 'Poštanski broj mora sadržavati samo brojeve.';
+      }
+    }
+    return 'Nevažeća vrijednost.';
   }
 }
