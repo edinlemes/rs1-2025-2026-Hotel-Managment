@@ -1,0 +1,306 @@
+<!-- Page Container -->
+<div class="min-h-screen bg-gray-50 py-8">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Page Header -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-[var(--color-text)] sm:text-4xl">
+        Browse Hotels
+      </h1>
+      <p class="mt-2 text-gray-600">
+        Discover and explore our collection of premium hotels
+      </p>
+    </div>
+
+    <!-- Filter & Search Section -->
+    <div class="mb-8 rounded-2xl bg-white p-6 shadow-sm">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Search Input -->
+        <div class="lg:col-span-2">
+          <label for="search" class="mb-2 block text-sm font-medium text-gray-700">
+            Search
+          </label>
+          <div class="relative">
+            <input
+              id="search"
+              type="text"
+              [(ngModel)]="searchTerm"
+              (keyup.enter)="onSearch()"
+              placeholder="Search by hotel name, city, or state..."
+              class="w-full rounded-lg border border-gray-300 px-4 py-2.5 pl-10 text-gray-900 placeholder-gray-400 transition focus:border-[var(--color-brand-2)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-2)]/20"
+            />
+            <svg
+              class="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- City Filter -->
+        <div>
+          <label for="city" class="mb-2 block text-sm font-medium text-gray-700">
+            City
+          </label>
+          <select
+            id="city"
+            [(ngModel)]="selectedCity"
+            (change)="onFilterChange()"
+            class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 transition focus:border-[var(--color-brand-2)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-2)]/20"
+          >
+            <option value="">All Cities</option>
+            @for (city of cities(); track city) {
+            <option [value]="city">{{ city }}</option>
+            }
+          </select>
+        </div>
+
+        <!-- State Filter -->
+        <div>
+          <label for="state" class="mb-2 block text-sm font-medium text-gray-700">
+            State
+          </label>
+          <select
+            id="state"
+            [(ngModel)]="selectedState"
+            (change)="onFilterChange()"
+            class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 transition focus:border-[var(--color-brand-2)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-2)]/20"
+          >
+            <option value="">All States</option>
+            @for (state of states(); track state) {
+            <option [value]="state">{{ state }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mt-4 flex flex-wrap gap-3">
+        <button
+          type="button"
+          (click)="onSearch()"
+          [disabled]="isLoading()"
+          class="inline-flex items-center gap-2 rounded-lg bg-[var(--color-brand-2)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-brand-2-dark)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-2)]/60 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <svg
+            class="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+          Search
+        </button>
+
+        <button
+          type="button"
+          (click)="clearFilters()"
+          [disabled]="isLoading()"
+          class="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400/60 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <svg
+            class="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+          Clear Filters
+        </button>
+      </div>
+
+      <!-- Results Count -->
+      @if (!isLoading() && hotels().length > 0) {
+      <div class="mt-4 border-t border-gray-200 pt-4">
+        <p class="text-sm text-gray-600">
+          Showing
+          <span class="font-semibold text-gray-900">{{ (currentPage() - 1) * pageSize() + 1 }}</span>
+          to
+          <span class="font-semibold text-gray-900">{{
+            Math.min(currentPage() * pageSize(), totalCount())
+          }}</span>
+          of
+          <span class="font-semibold text-gray-900">{{ totalCount() }}</span>
+          hotels
+        </p>
+      </div>
+      }
+    </div>
+
+    <!-- Loading State -->
+    @if (isLoading()) {
+    <div
+      class="flex min-h-[400px] items-center justify-center rounded-2xl bg-white p-12 shadow-sm"
+    >
+      <div class="text-center">
+        <div
+          class="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-[var(--color-brand-2)]"
+        ></div>
+        <p class="mt-4 text-gray-600">Loading hotels...</p>
+      </div>
+    </div>
+    }
+
+    <!-- Error State -->
+    @if (!isLoading() && errorMessage()) {
+    <div
+      class="rounded-2xl border border-red-200 bg-red-50 p-6 shadow-sm"
+    >
+      <div class="flex items-start gap-3">
+        <svg
+          class="h-6 w-6 flex-shrink-0 text-red-500"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <div>
+          <h3 class="text-sm font-semibold text-red-800">Error Loading Hotels</h3>
+          <p class="mt-1 text-sm text-red-700">{{ errorMessage() }}</p>
+          <button
+            type="button"
+            (click)="loadHotels()"
+            class="mt-3 rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+
+    <!-- Empty State -->
+    @if (!isLoading() && !errorMessage() && hotels().length === 0) {
+    <div
+      class="rounded-2xl bg-white p-12 text-center shadow-sm"
+    >
+      <svg
+        class="mx-auto h-16 w-16 text-gray-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+        />
+      </svg>
+      <h3 class="mt-4 text-lg font-semibold text-gray-900">No hotels found</h3>
+      <p class="mt-2 text-gray-600">Try adjusting your search or filter criteria</p>
+    </div>
+    }
+
+    <!-- Hotels Grid -->
+    @if (!isLoading() && !errorMessage() && hotels().length > 0) {
+    <div
+      class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      @for (hotel of hotels(); track trackByHotelId($index, hotel)) {
+      <app-hotel-card [hotel]="hotel" />
+      }
+    </div>
+    }
+
+    <!-- Pagination -->
+    @if (!isLoading() && !errorMessage() && totalPages() > 1) {
+    <div
+      class="mt-8 flex items-center justify-center"
+    >
+      <nav class="flex items-center gap-2" aria-label="Pagination">
+        <!-- Previous Button -->
+        <button
+          type="button"
+          (click)="onPageChange(currentPage() - 1)"
+          [disabled]="currentPage() === 1"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-gray-700 transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-2)]/60 disabled:cursor-not-allowed disabled:opacity-40"
+          aria-label="Previous page"
+        >
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+
+        <!-- Page Numbers -->
+        @for (page of getPaginationArray(); track page) {
+          <!-- Ellipsis -->
+          @if (page === -1) {
+          <span
+            class="inline-flex h-10 w-10 items-center justify-center text-gray-400"
+          >
+            ...
+          </span>
+          }
+
+          <!-- Page Button -->
+          @if (page !== -1) {
+          <button
+            type="button"
+            (click)="onPageChange(page)"
+            [class.bg-[var(--color-brand-2)]]="page === currentPage()"
+            [class.text-white]="page === currentPage()"
+            [class.font-semibold]="page === currentPage()"
+            [class.bg-white]="page !== currentPage()"
+            [class.text-gray-700]="page !== currentPage()"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-2)]/60"
+            [attr.aria-label]="'Page ' + page"
+            [attr.aria-current]="page === currentPage() ? 'page' : null"
+          >
+            {{ page }}
+          </button>
+          }
+        }
+
+        <!-- Next Button -->
+        <button
+          type="button"
+          (click)="onPageChange(currentPage() + 1)"
+          [disabled]="currentPage() === totalPages()"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-gray-700 transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-2)]/60 disabled:cursor-not-allowed disabled:opacity-40"
+          aria-label="Next page"
+        >
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+      </nav>
+    </div>
+    }
+  </div>
+</div>

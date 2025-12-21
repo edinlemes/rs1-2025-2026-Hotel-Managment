@@ -1,131 +1,97 @@
-<!DOCTYPE html>
-<html lang="bs">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hotel Management System</title>
-    <link rel="stylesheet" href="landing-page.component.scss" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+<div class="min-h-screen bg-white text-[var(--color-text)]">
+  <section class="relative h-[420px] overflow-hidden">
+    <img
+      src="https://images.pexels.com/photos/261187/pexels-photo-261187.jpeg"
+      alt="Hotel sa bazenom"
+      class="absolute inset-0 h-full w-full object-cover brightness-75"
     />
-  </head>
-  <body>
-    <div class="page">
-      <!-- NAVBAR -->
-      <header class="navbar">
-        <div class="nav-left">
-          <a routerLink="/public" class="logo-link">
-            <div class="logo-icon">🏨</div>
-            <span class="logo-text">Hotel Management System</span>
-          </a>
-        </div>
-
-        <nav class="nav-links">
-          <a routerLink="/public" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-          <a href="hotels.html">Hoteli</a>
-          <a routerLink="/public/about-us" routerLinkActive="active">O nama</a>
-          <a routerLink="/public/contact-us" routerLinkActive="active">Kontakt</a>
-        </nav>
-
-        <div class="nav-right">
-          <button class="btn-login" routerLink="/auth/register" routerLinkActive="active">
-            Login
-          </button>
-        </div>
-      </header>
-
-      <!-- HERO -->
-      <section class="hero">
-        <img
-          src="https://images.pexels.com/photos/261187/pexels-photo-261187.jpeg"
-          alt="Hotel sa bazenom"
-          class="hero-image"
-        />
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <h1>Rezervišite svoj boravak sada</h1>
-          <button class="btn-primary" onclick="location.href='hotels.html'">
-            Rezerviši sada
-          </button>
-        </div>
-      </section>
-
-      <!-- POPULARNI HOTELI -->
-      <section class="popular-hotels">
-        <h2>Popularni hoteli</h2>
-        <div class="hotel-grid">
-          <article class="hotel-card">
-            <img
-              src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg"
-              alt="Hotel"
-            />
-            <div class="hotel-info">
-              <h3>Hotel Aurora</h3>
-              <div class="hotel-rating">★★★★★</div>
-            </div>
-          </article>
-
-          <article class="hotel-card">
-            <img
-              src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg"
-              alt="Hotel"
-            />
-            <div class="hotel-info">
-              <h3>City View Hotel</h3>
-              <div class="hotel-rating">★★★★☆</div>
-            </div>
-          </article>
-
-          <article class="hotel-card">
-            <img
-              src="https://images.pexels.com/photos/261395/pexels-photo-261395.jpeg"
-              alt="Hotel"
-            />
-            <div class="hotel-info">
-              <h3>Riverside Resort</h3>
-              <div class="hotel-rating">★★★★★</div>
-            </div>
-          </article>
-
-          <article class="hotel-card">
-            <img
-              src="https://images.pexels.com/photos/237371/pexels-photo-237371.jpeg"
-              alt="Hotel"
-            />
-            <div class="hotel-info">
-              <h3>Grand Palace</h3>
-              <div class="hotel-rating">★★★★☆</div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- FEATURES -->
-      <section class="features">
-        <div class="feature">
-          <div class="feature-icon">🛏️</div>
-          <div class="feature-text">Udobne sobe</div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">📶</div>
-          <div class="feature-text">Besplatan Wi-Fi</div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">🍽️</div>
-          <div class="feature-text">Hotelski restoran</div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">🏊</div>
-          <div class="feature-text">Bazen i spa</div>
-        </div>
-      </section>
-
-      <!-- FOOTER -->
-      <footer class="footer">
-        <span>© 2025 Hotel Management System</span>
-      </footer>
+    <div class="absolute inset-0 bg-black/25"></div>
+    <div class="relative z-10 flex h-full flex-col items-center justify-center gap-4 px-5 text-center text-white">
+      <h1 class="text-3xl font-semibold sm:text-4xl">Rezervišite svoj boravak sada</h1>
+      <button
+        class="rounded-full bg-[var(--color-brand-2)] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-[var(--color-brand-2-dark)]"
+        routerLink="/public/hotels"
+      >
+        Rezerviši sada
+      </button>
     </div>
-  </body>
-</html>
+  </section>
+
+  <section class="bg-white px-4 py-10 sm:px-6 lg:px-10">
+    <h2 class="text-xl font-semibold text-[var(--color-text)] sm:text-2xl">Popularni hoteli</h2>
+    <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <article class="flex flex-col overflow-hidden rounded-[var(--radius-md)] bg-white shadow-[var(--shadow-card)]">
+        <img
+          src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg"
+          alt="Hotel Aurora"
+          class="h-40 w-full object-cover"
+        />
+        <div class="space-y-1 px-4 py-3">
+          <h3 class="text-sm font-semibold">Hotel Aurora</h3>
+          <div class="text-sm text-[var(--color-brand-2)]">★★★★★</div>
+        </div>
+      </article>
+
+      <article class="flex flex-col overflow-hidden rounded-[var(--radius-md)] bg-white shadow-[var(--shadow-card)]">
+        <img
+          src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg"
+          alt="City View Hotel"
+          class="h-40 w-full object-cover"
+        />
+        <div class="space-y-1 px-4 py-3">
+          <h3 class="text-sm font-semibold">City View Hotel</h3>
+          <div class="text-sm text-[var(--color-brand-2)]">★★★★☆</div>
+        </div>
+      </article>
+
+      <article class="flex flex-col overflow-hidden rounded-[var(--radius-md)] bg-white shadow-[var(--shadow-card)]">
+        <img
+          src="https://images.pexels.com/photos/261395/pexels-photo-261395.jpeg"
+          alt="Riverside Resort"
+          class="h-40 w-full object-cover"
+        />
+        <div class="space-y-1 px-4 py-3">
+          <h3 class="text-sm font-semibold">Riverside Resort</h3>
+          <div class="text-sm text-[var(--color-brand-2)]">★★★★★</div>
+        </div>
+      </article>
+
+      <article class="flex flex-col overflow-hidden rounded-[var(--radius-md)] bg-white shadow-[var(--shadow-card)]">
+        <img
+          src="https://images.pexels.com/photos/237371/pexels-photo-237371.jpeg"
+          alt="Grand Palace"
+          class="h-40 w-full object-cover"
+        />
+        <div class="space-y-1 px-4 py-3">
+          <h3 class="text-sm font-semibold">Grand Palace</h3>
+          <div class="text-sm text-[var(--color-brand-2)]">★★★★☆</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="border-y border-gray-100 bg-white px-4 py-8 sm:px-6 lg:px-10">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="flex flex-col items-center gap-2 text-center">
+        <div class="text-3xl">🛏️</div>
+        <div class="text-sm font-medium text-[var(--color-text)]">Udobne sobe</div>
+      </div>
+      <div class="flex flex-col items-center gap-2 text-center">
+        <div class="text-3xl">📶</div>
+        <div class="text-sm font-medium text-[var(--color-text)]">Besplatan Wi-Fi</div>
+      </div>
+      <div class="flex flex-col items-center gap-2 text-center">
+        <div class="text-3xl">🍽️</div>
+        <div class="text-sm font-medium text-[var(--color-text)]">Hotelski restoran</div>
+      </div>
+      <div class="flex flex-col items-center gap-2 text-center">
+        <div class="text-3xl">🏊</div>
+        <div class="text-sm font-medium text-[var(--color-text)]">Bazen i spa</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="flex items-center justify-center bg-white px-4 py-5 text-xs text-[var(--color-muted)] sm:px-6 lg:px-10">
+    <span>© 2025 Hotel Management System</span>
+  </footer>
+</div>

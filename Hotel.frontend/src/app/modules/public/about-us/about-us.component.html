@@ -1,80 +1,53 @@
-<div class="about-us-page">
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="nav-left">
-      <a routerLink="/public" class="logo-link">
-        <div class="logo-icon">🏨</div>
-        <span class="logo-text">Hotel Management System</span>
-      </a>
-    </div>
-
-    <nav class="nav-links">
-      <a routerLink="/public">Home</a>
-      <a href="hotels.html">Hoteli</a>
-      <a routerLink="/public/about-us" routerLinkActive="active">O nama</a>
-      <a routerLink="/public/contact-us" routerLinkActive="active">Kontakt</a>
-    </nav>
-
-    <div class="nav-right">
-      <button class="btn-login">Login</button>
-    </div>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <h1>O nama</h1>
-      <p>Upoznajte naš tim i našu misiju</p>
+<div class="flex min-h-screen flex-col bg-[var(--color-surface)] text-[var(--color-text)]">
+  <section class="bg-gradient-to-r from-indigo-400 to-purple-500 px-4 py-16 text-white sm:px-6 lg:px-10">
+    <div class="mx-auto max-w-3xl text-center">
+      <h1 class="text-3xl font-bold sm:text-4xl">O nama</h1>
+      <p class="mt-3 text-lg text-white/90">Upoznajte naš tim i našu misiju</p>
     </div>
   </section>
 
-  <!-- CONTENT SECTION -->
-  <section class="content-section">
-    <div class="container">
-      <div class="about-content">
-        <h2>Naša priča</h2>
-        <p>
-          Hotel Management System je moderna platforma za upravljanje hotelima koja
-          omogućava jednostavno rezervisanje smještaja, upravljanje resursima i
-          pružanje vrhunske usluge gostima.
+  <section class="flex-1 bg-[#f8f9fa] px-4 py-12 sm:px-6 lg:px-10">
+    <div class="mx-auto flex max-w-5xl flex-col gap-10">
+      <div class="rounded-2xl bg-white p-8 shadow-[0_4px_20px_rgba(0,0,0,0.1)]">
+        <h2 class="text-2xl font-semibold text-[#2c3e50]">Naša priča</h2>
+        <p class="mt-4 text-[1.05rem] leading-7 text-[#555]">
+          Hotel Management System je moderna platforma za upravljanje hotelima koja omogućava
+          jednostavno rezervisanje smještaja, upravljanje resursima i pružanje vrhunske usluge
+          gostima.
         </p>
-        <p>
-          Naš cilj je revolucionirati hotelsku industriju kroz inovativna tehnološka
-          rješenja koja čine proces rezervacije i upravljanja jednostavnijim i
-          efikasnijim.
+        <p class="mt-4 text-[1.05rem] leading-7 text-[#555]">
+          Naš cilj je revolucionirati hotelsku industriju kroz inovativna tehnološka rješenja koja čine
+          proces rezervacije i upravljanja jednostavnijim i efikasnijim.
         </p>
       </div>
 
-      <div class="mission-section">
-        <div class="mission-card">
-          <h3>🎯 Naša misija</h3>
-          <p>
-            Pružiti najbolje iskustvo rezervacije i upravljanja hotelima kroz
-            modernu i intuitivnu platformu.
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="rounded-2xl bg-white p-8 shadow-[0_4px_15px_rgba(0,0,0,0.08)] transition hover:-translate-y-1 hover:shadow-[0_6px_25px_rgba(0,0,0,0.12)]">
+          <h3 class="text-xl font-semibold text-indigo-500">🎯 Naša misija</h3>
+          <p class="mt-3 text-sm leading-7 text-[#666]">
+            Pružiti najbolje iskustvo rezervacije i upravljanja hotelima kroz modernu i intuitivnu
+            platformu.
           </p>
         </div>
 
-        <div class="mission-card">
-          <h3>👁️ Naša vizija</h3>
-          <p>
-            Biti vodeća platforma za hotelski menadžment u regiji, prepoznata po
-            kvalitetu i inovativnosti.
+        <div class="rounded-2xl bg-white p-8 shadow-[0_4px_15px_rgba(0,0,0,0.08)] transition hover:-translate-y-1 hover:shadow-[0_6px_25px_rgba(0,0,0,0.12)]">
+          <h3 class="text-xl font-semibold text-indigo-500">👁️ Naša vizija</h3>
+          <p class="mt-3 text-sm leading-7 text-[#666]">
+            Biti vodeća platforma za hotelski menadžment u regiji, prepoznata po kvalitetu i inovativnosti.
           </p>
         </div>
 
-        <div class="mission-card">
-          <h3>💎 Naše vrijednosti</h3>
-          <p>
-            Transparentnost, kvalitet, inovacija i posvećenost zadovoljstvu naših
-            korisnika.
+        <div class="rounded-2xl bg-white p-8 shadow-[0_4px_15px_rgba(0,0,0,0.08)] transition hover:-translate-y-1 hover:shadow-[0_6px_25px_rgba(0,0,0,0.12)]">
+          <h3 class="text-xl font-semibold text-indigo-500">💎 Naše vrijednosti</h3>
+          <p class="mt-3 text-sm leading-7 text-[#666]">
+            Transparentnost, kvalitet, inovacija i posvećenost zadovoljstvu naših korisnika.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>&copy; 2025 Hotel Management System. Sva prava zadržana.</p>
+  <footer class="bg-[#2c3e50] px-4 py-6 text-center text-white sm:px-6 lg:px-10">
+    <p class="text-sm opacity-90">&copy; 2025 Hotel Management System. Sva prava zadržana.</p>
   </footer>
 </div>
