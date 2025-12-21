@@ -1,138 +1,173 @@
 
-<div class="contact-page">
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="nav-left">
-      <a routerLink="/public" class="logo-link">
-        <div class="logo-icon">🏨</div>
-        <span class="logo-text">Hotel Management System</span>
-      </a>
-    </div>
-
-     <nav class="nav-links">
-      <a routerLink="/public">Home</a>
-      <a href="hotels.html">Hoteli</a>
-      <a routerLink="/public/about-us" routerLinkActive="active">O nama</a>
-      <a routerLink="/public/contact-us" routerLinkActive="active">Kontakt</a>
-    </nav>
-
-    <div class="nav-right">
-      <button class="btn-login">Login</button>
-    </div>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <h1>Kontakt</h1>
-      <p>Tu smo za vas — pošaljite nam poruku ili nas posjetite</p>
+<div class="flex min-h-screen flex-col bg-[var(--color-surface)] text-[var(--color-text)]">
+  <section class="bg-gradient-to-r from-indigo-400 to-purple-500 px-4 py-16 text-white sm:px-6 lg:px-10">
+    <div class="mx-auto max-w-3xl text-center">
+      <h1 class="text-3xl font-bold sm:text-4xl">Kontakt</h1>
+      <p class="mt-3 text-lg text-white/90">Tu smo za vas — pošaljite nam poruku ili nas posjetite</p>
     </div>
   </section>
 
-  <!-- CONTENT SECTION -->
-  <section class="content-section">
-    <div class="container">
-      <!-- Kontakt informacije + Forma -->
-      <div class="contact-grid">
-        <!-- Kontakt informacije -->
-        <div class="info-card">
-          <h2>Kontakt informacije</h2>
-          <p class="lead">
-            Javite nam se za podršku, partnerstvo ili opće upite.
-          </p>
+  <section class="flex-1 bg-[#f8f9fa] px-4 py-12 sm:px-6 lg:px-10">
+    <div class="mx-auto max-w-6xl space-y-10">
+      <div class="grid gap-6 lg:grid-cols-[1.05fr_1.35fr]">
+        <div class="rounded-2xl bg-white p-8 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+          <h2 class="text-2xl font-semibold text-[#2c3e50]">Kontakt informacije</h2>
+          <p class="mt-2 text-sm text-[#666]">Javite nam se za podršku, partnerstvo ili opće upite.</p>
 
-          <div class="info-list">
-            <div class="info-item">
-              <span class="icon">📍</span>
-              <div>
-                <div class="label">Adresa</div>
-                <div class="value">Ulica Kralja Tvrtka 10, Visoko, BiH</div>
+          <div class="mt-5 grid gap-3">
+            <div class="grid grid-cols-[2.5rem_1fr] items-start gap-3 rounded-xl border border-[#eef1f6] bg-[#fbfcff] px-4 py-3">
+              <span class="text-xl leading-none">📍</span>
+              <div class="space-y-1">
+                <div class="text-sm font-semibold text-[#2c3e50]">Adresa</div>
+                <div class="text-sm text-[#555]">Ulica Kralja Tvrtka 10, Visoko, BiH</div>
               </div>
             </div>
 
-            <div class="info-item">
-              <span class="icon">☎️</span>
-              <div>
-                <div class="label">Telefon</div>
-                <div class="value"><a href="1123456+387 61 123 456"></a></div>
+            <div class="grid grid-cols-[2.5rem_1fr] items-start gap-3 rounded-xl border border-[#eef1f6] bg-[#fbfcff] px-4 py-3">
+              <span class="text-xl leading-none">☎️</span>
+              <div class="space-y-1">
+                <div class="text-sm font-semibold text-[#2c3e50]">Telefon</div>
+                <div class="text-sm text-[#555]"><a href="tel:+38761123456" class="transition hover:text-indigo-500">+387 61 123 456</a></div>
               </div>
             </div>
 
-            <div class="info-item">
-              <span class="icon">✉️</span>
-              <div>
-                <div class="label">Email</div>
-                <div class="value"><a>mailto:info@hotelms.bainfo@hotelms.ba</a></div>
+            <div class="grid grid-cols-[2.5rem_1fr] items-start gap-3 rounded-xl border border-[#eef1f6] bg-[#fbfcff] px-4 py-3">
+              <span class="text-xl leading-none">✉️</span>
+              <div class="space-y-1">
+                <div class="text-sm font-semibold text-[#2c3e50]">Email</div>
+                <div class="text-sm text-[#555]"><a href="mailto:info@hotelms.ba" class="transition hover:text-indigo-500">info@hotelms.ba</a></div>
               </div>
             </div>
 
-            <div class="info-item">
-              <span class="icon">⏰</span>
-              <div>
-                <div class="label">Radno vrijeme</div>
-                <div class="value">Pon–Pet: 09:00–17:00</div>
+            <div class="grid grid-cols-[2.5rem_1fr] items-start gap-3 rounded-xl border border-[#eef1f6] bg-[#fbfcff] px-4 py-3">
+              <span class="text-xl leading-none">⏰</span>
+              <div class="space-y-1">
+                <div class="text-sm font-semibold text-[#2c3e50]">Radno vrijeme</div>
+                <div class="text-sm text-[#555]">Pon–Pet: 09:00–17:00</div>
               </div>
             </div>
           </div>
 
-          <div class="socials">
-            <a>#🔵</a>
-            <a>#🟣</a>
-            <a>#🔷</a>
+          <div class="mt-4 flex gap-3">
+            <a
+              aria-label="Facebook"
+              class="grid h-10 w-10 place-items-center rounded-full border border-[#e7ebff] bg-[#f1f4ff] text-[#3b4cca] shadow-sm transition hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(59,76,202,0.2)]"
+              href="#"
+            >
+              🔵
+            </a>
+            <a
+              aria-label="Instagram"
+              class="grid h-10 w-10 place-items-center rounded-full border border-[#e7ebff] bg-[#f1f4ff] text-[#3b4cca] shadow-sm transition hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(59,76,202,0.2)]"
+              href="#"
+            >
+              🟣
+            </a>
+            <a
+              aria-label="LinkedIn"
+              class="grid h-10 w-10 place-items-center rounded-full border border-[#e7ebff] bg-[#f1f4ff] text-[#3b4cca] shadow-sm transition hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(59,76,202,0.2)]"
+              href="#"
+            >
+              🔷
+            </a>
           </div>
         </div>
 
-        <!-- Forma -->
-        <div class="form-card">
-          <h2>Pošaljite poruku</h2>
-          <p class="lead">Odgovaramo u pravilu u roku 24h.</p>
+        <div class="rounded-2xl bg-white p-8 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+          <h2 class="text-2xl font-semibold text-[#2c3e50]">Pošaljite poruku</h2>
+          <p class="mt-1 text-sm text-[#666]">Odgovaramo u pravilu u roku 24h.</p>
 
-          <!-- Ako koristiš Reactive Forms, zamijeni s [formGroup] i (ngSubmit) -->
-          <form class="contact-form" >
-            <div class="form-row">
-              <div class="form-field">
-                <label for="name">Ime i prezime</label>
-                <input id="name" name="name" type="text" placeholder="Vaše ime" required />
-              </div>
-              <div class="form-field">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="vaš@email.com" required />
-              </div>
+          <form class="mt-5 grid gap-4">
+            <div class="grid gap-4 md:grid-cols-2">
+              <label class="space-y-2 text-sm font-semibold text-[#2c3e50]" for="name">
+                <span>Ime i prezime</span>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Vaše ime"
+                  required
+                  class="w-full rounded-lg border border-[#e1e5ee] bg-white px-3 py-2 text-sm text-[#333] shadow-sm outline-none transition focus:border-indigo-400 focus:ring-4 focus:ring-indigo-200/60"
+                />
+              </label>
+              <label class="space-y-2 text-sm font-semibold text-[#2c3e50]" for="email">
+                <span>Email</span>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="vas@email.com"
+                  required
+                  class="w-full rounded-lg border border-[#e1e5ee] bg-white px-3 py-2 text-sm text-[#333] shadow-sm outline-none transition focus:border-indigo-400 focus:ring-4 focus:ring-indigo-200/60"
+                />
+              </label>
             </div>
 
-            <div class="form-row">
-              <div class="form-field">
-                <label for="phone">Telefon (opcionalno)</label>
-                <input id="phone" name="phone" type="tel" placeholder="+387 6x xxx xxx" />
-              </div>
-              <div class="form-field">
-                <label for="subject">Tema</label>
-                <input id="subject" name="subject" type="text" placeholder="Npr. Upit za saradnju" required />
-              </div>
+            <div class="grid gap-4 md:grid-cols-2">
+              <label class="space-y-2 text-sm font-semibold text-[#2c3e50]" for="phone">
+                <span>Telefon (opcionalno)</span>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="+387 6x xxx xxx"
+                  class="w-full rounded-lg border border-[#e1e5ee] bg-white px-3 py-2 text-sm text-[#333] shadow-sm outline-none transition focus:border-indigo-400 focus:ring-4 focus:ring-indigo-200/60"
+                />
+              </label>
+              <label class="space-y-2 text-sm font-semibold text-[#2c3e50]" for="subject">
+                <span>Tema</span>
+                <input
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  placeholder="Npr. Upit za saradnju"
+                  required
+                  class="w-full rounded-lg border border-[#e1e5ee] bg-white px-3 py-2 text-sm text-[#333] shadow-sm outline-none transition focus:border-indigo-400 focus:ring-4 focus:ring-indigo-200/60"
+                />
+              </label>
             </div>
 
-            <div class="form-field">
-              <label for="message">Poruka</label>
-              <textarea id="message" name="message" rows="6" placeholder="Vaša poruka..." required></textarea>
-            </div>
+            <label class="space-y-2 text-sm font-semibold text-[#2c3e50]" for="message">
+              <span>Poruka</span>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                placeholder="Vaša poruka..."
+                required
+                class="w-full rounded-lg border border-[#e1e5ee] bg-white px-3 py-2 text-sm text-[#333] shadow-sm outline-none transition focus:border-indigo-400 focus:ring-4 focus:ring-indigo-200/60"
+              ></textarea>
+            </label>
 
-            <div class="form-actions">
-              <button type="submit" class="btn-primary">Pošalji poruku</button>
-              <span class="disclaimer">Slanjem pristajete na obradu podataka u skladu s našom politikom privatnosti.</span>
+            <div class="flex flex-wrap items-center gap-3">
+              <button
+                type="submit"
+                class="rounded-xl bg-gradient-to-r from-indigo-400 to-purple-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-[0_8px_18px_rgba(118,75,162,0.25)]"
+              >
+                Pošalji poruku
+              </button>
+              <span class="text-sm text-[#7a869a]">Slanjem pristajete na obradu podataka u skladu s našom politikom privatnosti.</span>
             </div>
           </form>
         </div>
       </div>
 
-      <!-- MAP SECTION -->
-      <div class="map-card">
-        <h3>Naša lokacija</h3>
-        <div class="map-wrapper">
-          <!-- Zamijeni src sa svojim Google Maps embed linkom -->
+      <div class="rounded-2xl bg-white p-8 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+        <h3 class="text-xl font-semibold text-[#2c3e50]">Naša lokacija</h3>
+        <div class="mt-4 overflow-hidden rounded-xl border border-[#eef1f6] shadow-[0_4px_16px_rgba(0,0,0,0.08)]">
           <iframe
             title="Mapa lokacije"
             src="https://www.google.com/maps?q=Visoko%20Bosna%20i%20Hercegovina&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            aria zadržana.></iframe>
+            class="h-[360px] w-full border-0 md:h-[420px]"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#2c3e50] px-4 py-6 text-center text-white sm:px-6 lg:px-10">
+    <p class="text-sm opacity-90">&copy; 2025 Hotel Management System. Sva prava zadržana.</p>
+  </footer>
 </div>
